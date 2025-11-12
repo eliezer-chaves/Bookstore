@@ -1,0 +1,217 @@
+# Deploy Angular + Laravel na Hostinger
+
+Este guia descreve o processo completo de configuração e deploy de uma aplicação Angular com backend Laravel na Hostinger.
+
+## 📋 Pré-requisitos
+
+- Node.js e npm instalados
+- Composer instalado
+- MySQL/MariaDB
+- VS Code com extensão SFTP instalada
+- Acesso FTP à Hostinger
+
+## 🗄️ Passo 1: Criar Banco de Dados
+
+Acesse o painel da Hostinger e crie um novo banco de dados MySQL. Anote:
+- Nome do banco
+- Usuário
+- Senha
+- Host (geralmente `localhost`)
+
+## 🅰️ Passo 2: Criar Projeto Angular
+
+```bash
+ng new project-name
+```
+
+### Configurar pasta de build
+
+Edite o arquivo `angular.json` para alterar o caminho de saída do build:
+
+```json
+{
+  "projects": {
+    "project-name": {
+      "architect": {
+        "build": {
+          "options": {
+            "outputPath": "../dist"
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+**Estrutura de pastas resultante:**
+```
+project-angular/
+dist/
+```
+
+## 🐘 Passo 3: Criar Projeto Laravel
+
+```bash
+composer create-project laravel/laravel api
+```
+
+### Configurar .env
+
+Edite o arquivo `.env` na pasta `api` com as credenciais do banco:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=localhost
+DB_PORT=3306
+DB_DATABASE=seu_banco
+DB_USERNAME=seu_usuario
+DB_PASSWORD=sua_senha
+```
+
+### Instalar e configurar JWT
+
+```bash
+cd api
+composer require tymon/jwt-auth
+php artisan jwt:secret
+```
+
+### Executar migrations
+
+```bash
+php artisan migrate
+```
+
+## 📁 Passo 4: Criar arquivo .htaccess
+
+Crie o arquivo `.htaccess` na raiz do projeto de deploy (pasta que será enviada para `/public_html/`):
+
+```apache
+RewriteEngine On
+
+# Força HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Redireciona API para o Laravel
+RewriteCond %{REQUEST_URI} ^/api/(.*)$
+RewriteRule ^api/(.*)$ api/public/$1 [L,QSA]
+
+# Serve arquivos existentes diretamente
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Angular SPA fallback
+RewriteRule ^ index.html [L]
+
+# Headers de segurança
+<IfModule mod_headers.c>
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-Content-Type-Options "nosniff"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    Header set X-XSS-Protection "1; mode=block"
+</IfModule>
+```
+
+## 🚀 Passo 5: Configurar SFTP no VS Code
+
+1. Pressione `Ctrl+Shift+P`
+2. Digite `SFTP: Config`
+3. Cole a configuração abaixo:
+
+```json
+{
+    "name": "Hostinger Upload",
+    "host": "149.62.37.199",
+    "protocol": "ftp",
+    "port": 21,
+    "username": "u114802493.wheat-porpoise-135321.hostingersite.com",
+    "password": "eOm^LGa7dggHOm1?",
+    "uploadOnSave": false,
+    "autoUpload": false,
+    "autoDelete": false,
+    "useTempFile": true,
+    "concurrency": 3,
+    "ignore": [
+        ".vscode",
+        "node_modules",
+        ".git"
+    ],
+    "profiles": {
+        "frontend": {
+            "context": "deploy",
+            "remotePath": "/public_html/"
+        },
+        "api": {
+            "context": "api",
+            "remotePath": "/public_html/api/"
+        }
+    }
+}
+```
+
+## 📤 Passo 6: Fazer Upload
+
+### Build do Angular
+```bash
+cd project-angular
+ng build --configuration production
+```
+
+### Upload via SFTP
+
+1. **Frontend**: 
+   - Abra a pasta `dist` no VS Code
+   - `Ctrl+Shift+P` → `SFTP: Upload Project`
+   - Selecione o profile `frontend`
+
+2. **Backend**:
+   - Abra a pasta `api` no VS Code
+   - `Ctrl+Shift+P` → `SFTP: Upload Project`
+   - Selecione o profile `api`
+
+3. **Arquivo .htaccess**:
+   - Faça upload manualmente para `/public_html/`
+
+## ✅ Verificação
+
+Após o deploy:
+- Frontend estará em: `https://seudominio.com`
+- API estará em: `https://seudominio.com/api`
+
+Teste endpoints da API:
+```bash
+curl https://seudominio.com/api/health
+```
+
+## 🔒 Segurança
+
+⚠️ **IMPORTANTE**: Remova as credenciais FTP do arquivo `sftp.json` após o primeiro upload ou adicione o arquivo ao `.gitignore`:
+
+```bash
+echo ".vscode/sftp.json" >> .gitignore
+```
+
+## 📝 Notas
+
+- Certifique-se de que a pasta `storage` e `bootstrap/cache` do Laravel tenham permissões de escrita (755 ou 775)
+- Configure o CORS no Laravel se necessário
+- Atualize a `APP_URL` no `.env` do Laravel com seu domínio real
+- Configure `APP_DEBUG=false` em produção
+
+## 🆘 Troubleshooting
+
+**Erro 500 na API:**
+- Verifique permissões das pastas
+- Verifique logs em `api/storage/logs/laravel.log`
+
+**Rotas Angular não funcionam:**
+- Verifique se o `.htaccess` foi enviado corretamente
+- Confirme que `mod_rewrite` está habilitado no servidor
+
+**Erro de conexão com banco:**
+- Verifique credenciais no `.env`
+- Confirme que o banco de dados existe
+- Teste conexão direta via phpMyAdmin
