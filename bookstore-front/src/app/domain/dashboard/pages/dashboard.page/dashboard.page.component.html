@@ -1,2 +1,7 @@
-<p>dashboard.page works!</p>
-<button (click)="logout()">Logout</button>
+@if ($user | async; as user) {
+    <h1 class="mb-lg">Bem vindo, {{ user.usr_first_name }}!</h1>
+}
+
+<button nz-button nzBlock nzType="primary" (click)="logout()" [nzLoading]="isLoading">
+    Logout
+</button>

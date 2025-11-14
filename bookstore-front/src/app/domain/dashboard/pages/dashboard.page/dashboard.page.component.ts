@@ -1,16 +1,29 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../../../core/services/auth.service';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard.page',
-  imports: [],
+  imports: [NzButtonModule, AsyncPipe],
   templateUrl: './dashboard.page.component.html',
   styleUrl: './dashboard.page.component.css'
 })
-export class DashboardPageComponent  {
-  constructor (private authService: AuthService){}
+export class DashboardPageComponent {
+  isLoading = false;
 
-  logout(){
+  $user;
+
+  constructor(private authService: AuthService) {
+    this.$user = this.authService.currentUser$;
+    
+  }
+
+
+
+  logout() {
+    this.isLoading = true;
     this.authService.logout();
+    this.isLoading = false;
   }
 }
