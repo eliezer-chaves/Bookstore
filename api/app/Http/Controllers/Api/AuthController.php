@@ -60,7 +60,7 @@ class AuthController extends Controller
                         true,      // https only
                         true,      // httpOnly
                         false,
-                        'Strict'
+                        'None'
                     )
                 );
         } catch (PDOException $e) {
@@ -77,16 +77,17 @@ class AuthController extends Controller
             DB::connection()->getPdo();
 
             $credentials = [
-                'usr_cpf' => $request->get('usr_cpf'),
-                'password' => $request->get('password')
+                'usr_email' => $request->get('usr_email'),
+                'password' => $request->get('usr_password') // <<< Precisa ser 'password' para o Auth funcionar por conta do JWT
             ];
 
-            $user = UserModel::where('usr_cpf', $request->get('usr_cpf'))->first();
+
+            $user = UserModel::where('usr_email', $request->get('usr_email'))->first();
             if (!$user) {
                 return response()->json([
                     'error_type' => 'user_not_found',
                     'error_title' => 'Usuário não encontrado',
-                    'error_message' => 'O CPF informado não está cadastrado.'
+                    'error_message' => 'O email informado não está cadastrado.'
                 ], 404);
             }
 
@@ -94,11 +95,12 @@ class AuthController extends Controller
                 return response()->json([
                     'error_type' => 'invalid_credentials',
                     'error_title' => 'Credenciais inválidas',
-                    'error_message' => 'CPF ou senha incorretos.'
+                    'error_message' => 'Email ou senha incorretos.'
                 ], 401);
             }
 
-            return response()->json(['message' => 'Login bem-sucedido'])->withCookie(cookie('token', $token, 60, '/', null, true, true, false, 'Strict'));
+            return response()->json(
+                ['message' => 'Login bem-sucedido'])->withCookie(cookie('token', $token, 60, '/', null, true, true, false, 'None'));
         } catch (Exception $e) {
             Log::error('Erro no login: ' . $e->getMessage());
             return response()->json([
@@ -121,77 +123,94 @@ class AuthController extends Controller
     {
         try {
             $user = auth('api')->user();
-            if ($user->usr_birth_date) {
-                $user->usr_birth_date = Carbon::parse($user->usr_birth_date)->toIso8601String();
-            }
-            return response()->json($user);
-        } catch (Exception $e) {
-            Log::error('Erro ao obter dados do usuário: ' . $e->getMessage());
-            return response()->json(['message' => 'Erro ao buscar usuário'], 500);
-        }
-    }
 
-    // Atualiza dados do usuário autenticado
-    public function updateUser(Request $request)
-    {
-        try {
-            $user = auth('api')->user();
             if (!$user) {
                 return response()->json([
                     'error_type' => 'unauthenticated',
                     'error_title' => 'Não autenticado',
-                    'error_message' => 'Você precisa estar logado para atualizar seus dados.'
+                    'error_message' => 'Usuário não encontrado no token.'
                 ], 401);
             }
 
-            $data = $request->all();
-            if (!empty($data['usr_birth_date'])) {
-                $data['usr_birth_date'] = Carbon::parse($data['usr_birth_date'])->format('Y-m-d');
-            }
-
-            $validator = Validator::make($data, [
-                'usr_password' => 'required|string',
-                'usr_first_name' => 'required|string|max:255',
-                'usr_last_name' => 'required|string|max:255',
-                'usr_cpf' => 'required|string|max:20|unique:usr_user,usr_cpf,' . $user->usr_id . ',usr_id',
-                'usr_email' => 'required|email|unique:usr_user,usr_email,' . $user->usr_id . ',usr_id',
-                'usr_phone' => 'nullable|string|max:20',
-                'usr_birth_date' => 'nullable|date',
-                'usr_address' => 'nullable|array',
+            return response()->json([
+                'usr_id' => $user->usr_id,
+                'usr_first_name' => $user->usr_first_name,
+                'usr_last_name' => $user->usr_last_name,
+                'usr_email' => $user->usr_email,
+                'usr_phone' => $user->usr_phone,
             ]);
 
-            if ($validator->fails()) {
-                return response()->json($validator->errors(), 422);
-            }
-
-            if (!Hash::check($data['usr_password'], $user->password)) {
-                return response()->json([
-                    'error_type' => 'invalid_password',
-                    'error_title' => 'Senha incorreta',
-                    'error_message' => 'A senha atual fornecida está incorreta.'
-                ], 403);
-            }
-
-            $user->usr_first_name = $data['usr_first_name'];
-            $user->usr_last_name = $data['usr_last_name'];
-            $user->usr_cpf = $data['usr_cpf'];
-            $user->usr_email = $data['usr_email'];
-            $user->usr_phone = $data['usr_phone'] ?? null;
-            $user->usr_birth_date = $data['usr_birth_date'] ?? null;
-            $user->usr_address = $data['usr_address'] ?? null;
-            $user->save();
-
-            return response()->json($user);
-
         } catch (Exception $e) {
-            Log::error('Erro ao atualizar usuário: ' . $e->getMessage());
+            Log::error('Erro ao obter dados do usuário: ' . $e->getMessage());
             return response()->json([
-                'error_type' => 'update_error',
-                'error_title' => 'Erro ao atualizar',
-                'error_message' => 'Não foi possível atualizar os dados do usuário.'
+                'error_type' => 'server_error',
+                'error_title' => 'Erro interno',
+                'error_message' => 'Não foi possível retornar os dados do usuário.'
             ], 500);
         }
     }
+
+    // Atualiza dados do usuário autenticado
+    // public function updateUser(Request $request)
+    // {
+    //     try {
+    //         $user = auth('api')->user();
+    //         if (!$user) {
+    //             return response()->json([
+    //                 'error_type' => 'unauthenticated',
+    //                 'error_title' => 'Não autenticado',
+    //                 'error_message' => 'Você precisa estar logado para atualizar seus dados.'
+    //             ], 401);
+    //         }
+
+    //         $data = $request->all();
+    //         if (!empty($data['usr_birth_date'])) {
+    //             $data['usr_birth_date'] = Carbon::parse($data['usr_birth_date'])->format('Y-m-d');
+    //         }
+
+    //         $validator = Validator::make($data, [
+    //             'usr_password' => 'required|string',
+    //             'usr_first_name' => 'required|string|max:255',
+    //             'usr_last_name' => 'required|string|max:255',
+    //             'usr_cpf' => 'required|string|max:20|unique:usr_user,usr_cpf,' . $user->usr_id . ',usr_id',
+    //             'usr_email' => 'required|email|unique:usr_user,usr_email,' . $user->usr_id . ',usr_id',
+    //             'usr_phone' => 'nullable|string|max:20',
+    //             'usr_birth_date' => 'nullable|date',
+    //             'usr_address' => 'nullable|array',
+    //         ]);
+
+    //         if ($validator->fails()) {
+    //             return response()->json($validator->errors(), 422);
+    //         }
+
+    //         if (!Hash::check($data['usr_password'], $user->password)) {
+    //             return response()->json([
+    //                 'error_type' => 'invalid_password',
+    //                 'error_title' => 'Senha incorreta',
+    //                 'error_message' => 'A senha atual fornecida está incorreta.'
+    //             ], 403);
+    //         }
+
+    //         $user->usr_first_name = $data['usr_first_name'];
+    //         $user->usr_last_name = $data['usr_last_name'];
+    //         $user->usr_cpf = $data['usr_cpf'];
+    //         $user->usr_email = $data['usr_email'];
+    //         $user->usr_phone = $data['usr_phone'] ?? null;
+    //         $user->usr_birth_date = $data['usr_birth_date'] ?? null;
+    //         $user->usr_address = $data['usr_address'] ?? null;
+    //         $user->save();
+
+    //         return response()->json($user);
+
+    //     } catch (Exception $e) {
+    //         Log::error('Erro ao atualizar usuário: ' . $e->getMessage());
+    //         return response()->json([
+    //             'error_type' => 'update_error',
+    //             'error_title' => 'Erro ao atualizar',
+    //             'error_message' => 'Não foi possível atualizar os dados do usuário.'
+    //         ], 500);
+    //     }
+    // }
 
     // Atualiza o token JWT (caso o frontend implemente refresh)
 

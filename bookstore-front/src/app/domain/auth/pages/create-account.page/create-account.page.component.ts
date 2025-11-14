@@ -15,7 +15,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { LoadingService } from '../../../../shared/services/loading.service';
 import { AuthService } from '../../../../core/services/auth.service';
-import { iUser } from '../../../../core/interfaces/iUser.interface';
+import { iUser, iUserRegister } from '../../../../core/interfaces/iUser.interface';
 
 @Component({
   selector: 'app-create-account.page',
@@ -46,7 +46,7 @@ export class CreateAccountPageComponent {
     if (this.validateForm.valid) {
       this.isLoading = true;
 
-      this.authService.register(this.validateForm.value as iUser).subscribe({
+      this.authService.register(this.validateForm.value as iUserRegister).subscribe({
         next: () => {
           console.log('user created');
           this.isLoading = false;

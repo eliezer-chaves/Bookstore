@@ -44,7 +44,13 @@ class UserModel extends Authenticatable implements JWTSubject
         return [];
     }
 
-   
+    public function getAuthPassword()
+    {
+        return $this->usr_password;
+    }
+
+
+
 
 
 }

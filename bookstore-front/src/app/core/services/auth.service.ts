@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, of, switchMap, tap, catchError, throwError, shareReplay, map } from 'rxjs';
 import { Router } from '@angular/router';
 import { environment } from '../../environment/environment';
-import { iUser } from '../interfaces/iUser.interface';
+import { iUser, iUserRegister } from '../interfaces/iUser.interface';
 
 
 @Injectable({ providedIn: 'root' })
@@ -25,7 +25,7 @@ export class AuthService {
   ) { }
 
   // Cadastro de novo usuário
-  register(data: iUser): Observable<any> {
+  register(data: iUserRegister): Observable<any> {
     const mapped = {
       usr_first_name: data.usr_first_name,
       usr_last_name: data.usr_last_name,
@@ -46,8 +46,8 @@ export class AuthService {
   }
 
   // Login com CPF e senha
-  login(usr_cpf: string, password: string): Observable<any> {
-    return this.http.post<any>(`${this.API_URL}/login`, { usr_cpf, password }, {
+  login(usr_email: string, usr_password: string): Observable<any> {
+    return this.http.post<any>(`${this.API_URL}/login`, { usr_email, usr_password }, {
       withCredentials: true
     }).pipe(
       switchMap(() => this.getMe()),
@@ -60,22 +60,22 @@ export class AuthService {
   }
 
   // Atualiza dados do usuário
-  updateUser(data: iUser): Observable<iUser> {
-    const mapped = {
-      usr_password: data.usr_password,
-      usr_first_name: data.usr_first_name,
-      usr_last_name: data.usr_last_name,
-      usr_email: data.usr_email,
-      usr_phone: data.usr_phone,
-    };
+  // updateUser(data: iUser): Observable<iUser> {
+  //   const mapped = {
+  //     usr_password: data.usr_password,
+  //     usr_first_name: data.usr_first_name,
+  //     usr_last_name: data.usr_last_name,
+  //     usr_email: data.usr_email,
+  //     usr_phone: data.usr_phone,
+  //   };
 
-    return this.http.put<iUser>(`${this.API_URL}/user`, mapped, { withCredentials: true }).pipe(
-      tap(user => {
-        this.currentUserSubject.next(user);
-      }),
-      catchError(this.handleError)
-    );
-  }
+  //   return this.http.put<iUser>(`${this.API_URL}/user`, mapped, { withCredentials: true }).pipe(
+  //     tap(user => {
+  //       this.currentUserSubject.next(user);
+  //     }),
+  //     catchError(this.handleError)
+  //   );
+  // }
 
   // Método simplificado para buscar dados do usuário
   getMe(): Observable<iUser> {
