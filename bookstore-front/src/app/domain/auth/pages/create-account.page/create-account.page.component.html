@@ -1,1 +1,61 @@
-<p>create-account.page works!</p>
+<div class="card">
+    <h1 class="text-center">Create Your Account</h1>
+    <form nz-form [nzLayout]="'vertical'" [formGroup]="validateForm" (ngSubmit)="submitForm()" class="mt-md">
+        <div class="d-flex-center" style="gap: 16px;">
+            <nz-form-item>
+                <nz-form-label class="custom-label">First Name</nz-form-label>
+                <nz-form-control nzErrorTip="Please input your first name!">
+                    <input nz-input formControlName="usr_first_name" placeholder="Jhon" />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label class="custom-label">Last Name</nz-form-label>
+                <nz-form-control nzErrorTip="Please input your last name!">
+                    <input nz-input formControlName="usr_last_name" placeholder="Doe" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
+        <nz-form-item class="mt-sm">
+            <nz-form-label>Phone</nz-form-label>
+            <nz-form-control nzErrorTip="Please input your phone number!">
+                <input nz-input formControlName="usr_phone" placeholder="(00) 0 0000-0000" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item class="mt-sm">
+            <nz-form-label>Email</nz-form-label>
+            <nz-form-control nzErrorTip="Please input your email!">
+                <input nz-input formControlName="usr_email" placeholder="jhondoe@email.com" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item class="mt-sm">
+            <nz-form-label>Password</nz-form-label>
+            <nz-form-control nzErrorTip="Please input your password!">
+                <nz-input-password>
+                    <input nz-input placeholder="••••••••" formControlName="usr_password" />
+                </nz-input-password>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item class="mt-sm">
+            <nz-form-label>Confirm Password</nz-form-label>
+            <nz-form-control nzErrorTip="Please input your password!">
+                <nz-input-password>
+                    <input nz-input placeholder="••••••••" formControlName="usr_password_confirmation" />
+                </nz-input-password>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item class="mt-md">
+            <nz-form-control>
+                <button nz-button nzType="primary" nzBlock [nzLoading]="isLoading"
+                    [disabled]="!validateForm.valid || isLoading">
+                    Create Account
+                </button>
+            </nz-form-control>
+        </nz-form-item>
+        <div class="text-center mt-sm">
+            <span style="color: var(--light-text-gray) !important;">Already have an account?</span>
+            <a routerLink="/auth/login"> Sign In</a>
+        </div>
+    </form>
+
+</div>

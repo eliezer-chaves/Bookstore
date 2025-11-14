@@ -17,43 +17,58 @@ use Carbon\Carbon;
 
 class AuthController extends Controller
 {
-    // Registro de novo usuário e emissão de JWT como cookie
+    // Registro de novo usuário e emissão de JWT como cookie asdfasdfasdfas
     public function register(Request $request)
     {
-        $data = $request->all();
-        if (!empty($data['usr_birth_date'])) {
-            $data['usr_birth_date'] = Carbon::parse($data['usr_birth_date'])->format('Y-m-d');
+        try {
+            $data = $request->all();
+
+            // Validação — agora alinhada com a interface iUser
+            $validator = Validator::make($data, [
+                'usr_first_name' => 'required|string|max:255',
+                'usr_last_name' => 'required|string|max:255',
+                'usr_email' => 'required|email|unique:usr_user,usr_email',
+                'usr_phone' => 'nullable|string|max:20',
+                'usr_password' => 'required|confirmed|min:6', // usa usr_password_confirmation
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json($validator->errors(), 422);
+            }
+
+            // Criação do usuário
+            $user = UserModel::create([
+                'usr_first_name' => $data['usr_first_name'],
+                'usr_last_name' => $data['usr_last_name'],
+                'usr_email' => $data['usr_email'],
+                'usr_phone' => $data['usr_phone'] ?? null,
+                'usr_password' => Hash::make($data['usr_password']),
+            ]);
+
+            // Gera o token
+            $token = JWTAuth::fromUser($user);
+
+            return response()
+                ->json(['user' => $user])
+                ->withCookie(
+                    cookie(
+                        'token',
+                        $token,
+                        60,        // expira em minutos
+                        '/',
+                        null,
+                        true,      // https only
+                        true,      // httpOnly
+                        false,
+                        'Strict'
+                    )
+                );
+        } catch (PDOException $e) {
+            Log::error(($e->getMessage()));
         }
-        //Validação dos dados
-        $validator = Validator::make($data, [
-            'usr_first_name' => 'required|string|max:255',
-            'usr_last_name' => 'required|string|max:255',
-            'usr_cpf' => 'required|string|max:20|unique:usr_user,usr_cpf',
-            'usr_email' => 'required|email|unique:usr_user,usr_email',
-            'usr_password' => 'required|confirmed|min:6',
-            'usr_terms_accept' => 'required|boolean|in:1,true',
-        ]);
 
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 422);
-        }
-
-        $user = UserModel::create([
-            'usr_first_name' => $data['usr_first_name'],
-            'usr_last_name' => $data['usr_last_name'],
-            'usr_cpf' => $data['usr_cpf'],
-            'usr_email' => $data['usr_email'],
-            'password' => Hash::make($data['usr_password']),
-            'usr_phone' => $data['usr_phone'] ?? null,
-            'usr_birth_date' => $data['usr_birth_date'] ?? null,
-            'usr_address' => $data['usr_address'] ?? null,
-            'usr_terms_accept' => true,
-        ]);
-
-        $token = JWTAuth::fromUser($user);
-
-        return response()->json(['user' => $user])->withCookie(cookie('token', $token, 60, '/', null, true, true, false, 'Strict'));
     }
+
 
     // Login e envio do JWT via HttpOnly cookie
     public function login(Request $request)
