@@ -39,7 +39,7 @@ export class AuthService {
       tap(response => {
         this.currentUserSubject.next(response.user);
         this.isInitialized = true;
-        this.router.navigate(['/home/dashboard']);
+        this.router.navigate(['/']);
       }),
       catchError(this.handleError)
     );
@@ -47,16 +47,40 @@ export class AuthService {
 
   // Login com CPF e senha
   login(usr_email: string, usr_password: string): Observable<any> {
-    return this.http.post<any>(`${this.API_URL}/login`, { usr_email, usr_password }, {
-      withCredentials: true
-    }).pipe(
-      switchMap(() => this.getMe()),
+    return this.http.post<any>(
+      `${this.API_URL}/login`,
+      { usr_email, usr_password },
+      { withCredentials: true }
+    ).pipe(
+      switchMap((loginResponse: any) => {
+        // Ativa o timer de logout usando o expires_in recebido do backend
+        if (loginResponse && loginResponse.expires_in) {
+          this.setAutoLogout(loginResponse.expires_in);
+        }
+
+        // Depois de logar, buscar dados do usuário
+        return this.getMe();
+      }),
       tap(() => {
         this.isInitialized = true;
-        this.router.navigate(['/home/dashboard']);
+        this.router.navigate(['/']);
       }),
       catchError(this.handleError)
     );
+  }
+
+
+  private logoutTimer: any = null;
+
+  setAutoLogout(seconds: number) {
+    if (this.logoutTimer) {
+      clearTimeout(this.logoutTimer);
+    }
+
+    this.logoutTimer = setTimeout(() => {
+      this.resetAuthState();
+      this.router.navigate(['/']);
+    }, seconds * 1000);
   }
 
   // Atualiza dados do usuário
@@ -144,6 +168,10 @@ export class AuthService {
 
   resetAuthState(): void {
     this.currentUserSubject.next(null);
+    if (this.logoutTimer) {
+      clearTimeout(this.logoutTimer);
+      this.logoutTimer = null;
+    }
   }
 
 

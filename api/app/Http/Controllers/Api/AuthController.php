@@ -47,6 +47,7 @@ class AuthController extends Controller
 
             // Gera o token
             $token = JWTAuth::fromUser($user);
+            $expires = intval(env('JWT_COOKIE_EXPIRES', 60));
 
             return response()
                 ->json(['user' => $user])
@@ -54,7 +55,7 @@ class AuthController extends Controller
                     cookie(
                         'token',
                         $token,
-                        60,        // expira em minutos
+                        $expires,        // expira em minutos
                         '/',
                         null,
                         true,      // https only
@@ -74,42 +75,47 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         try {
-            DB::connection()->getPdo();
+            $credentials = $request->only('usr_email', 'usr_password');
 
-            $credentials = [
-                'usr_email' => $request->get('usr_email'),
-                'password' => $request->get('usr_password') // <<< Precisa ser 'password' para o Auth funcionar por conta do JWT
-            ];
-
-
-            $user = UserModel::where('usr_email', $request->get('usr_email'))->first();
-            if (!$user) {
-                return response()->json([
-                    'error_type' => 'user_not_found',
-                    'error_title' => 'Usuário não encontrado',
-                    'error_message' => 'O email informado não está cadastrado.'
-                ], 404);
+            if (
+                !$token = auth('api')->attempt([
+                    'usr_email' => $credentials['usr_email'],
+                    'password' => $credentials['usr_password']
+                ])
+            ) {
+                return response()->json(['message' => 'Credenciais inválidas'], 401);
             }
 
-            if (!$token = auth('api')->attempt($credentials)) {
-                return response()->json([
-                    'error_type' => 'invalid_credentials',
-                    'error_title' => 'Credenciais inválidas',
-                    'error_message' => 'Email ou senha incorretos.'
-                ], 401);
-            }
+            $user = auth('api')->user();
 
-            return response()->json(
-                ['message' => 'Login bem-sucedido'])->withCookie(cookie('token', $token, 60, '/', null, true, true, false, 'None'));
+            // Tempo em minutos definido no .env convertido para segundos
+            $expiresInSeconds = config('jwt.ttl') * 60;
+
+            return response()
+                ->json([
+                    'user' => $user,
+                    'expires_in' => $expiresInSeconds
+                ])
+                ->withCookie(
+                    cookie(
+                        name: 'token',
+                        value: $token,
+                        minutes: config('jwt.ttl'),
+                        path: '/',
+                        domain: null,
+                        secure: true,
+                        httpOnly: true,
+                        raw: false,
+                        sameSite: 'None'
+                    )
+                );
+
         } catch (Exception $e) {
-            Log::error('Erro no login: ' . $e->getMessage());
-            return response()->json([
-                'error_type' => 'database_error',
-                'error_title' => 'Erro',
-                'error_message' => 'Não foi possível conectar.'
-            ], 500);
+            Log::error("Erro no login: {$e->getMessage()}");
+            return response()->json(['message' => 'Erro no servidor'], 500);
         }
     }
+
 
     // Logout - remove o cookie JWT
     public function logout()
