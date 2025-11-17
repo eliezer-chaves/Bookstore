@@ -48,6 +48,7 @@ class AuthController extends Controller
             // Gera o token
             $token = JWTAuth::fromUser($user);
             $expires = intval(env('JWT_COOKIE_EXPIRES', 60));
+            $domain = env('SESSION_DOMAIN');
 
             return response()
                 ->json(['user' => $user])
@@ -57,7 +58,7 @@ class AuthController extends Controller
                         $token,
                         $expires,        // expira em minutos
                         '/',
-                        null,
+                        $domain,
                         true,      // https only
                         true,      // httpOnly
                         false,
@@ -90,6 +91,7 @@ class AuthController extends Controller
 
             // Tempo em minutos definido no .env convertido para segundos
             $expiresInSeconds = config('jwt.ttl') * 60;
+            $domain = env('SESSION_DOMAIN');
 
             return response()
                 ->json([
@@ -102,7 +104,7 @@ class AuthController extends Controller
                         value: $token,
                         minutes: config('jwt.ttl'),
                         path: '/',
-                        domain: null,
+                        domain: $domain,
                         secure: true,
                         httpOnly: true,
                         raw: false,
@@ -121,8 +123,22 @@ class AuthController extends Controller
     public function logout()
     {
         auth('api')->logout();
-        return response()->json(['message' => 'Logout realizado'])->withCookie(Cookie::forget('token'));
+
+        return response()
+            ->json(['message' => 'Logout realizado'])
+            ->withCookie(cookie(
+                'token',
+                '',
+                -1, // expira no passado
+                '/',
+                env('SESSION_DOMAIN'),
+                true,   // Secure
+                true,   // HttpOnly
+                false,  // Raw
+                'None'  // SameSite
+            ));
     }
+
 
     // Retorna dados do usuário logado (via token do cookie)
     public function me()

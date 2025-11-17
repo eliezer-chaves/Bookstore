@@ -19,11 +19,17 @@ export class DashboardPageComponent {
     
   }
 
-
-
   logout() {
-    this.isLoading = true;
-    this.authService.logout();
-    this.isLoading = false;
-  }
+  this.isLoading = true;
+
+  this.authService.logout().subscribe({
+    next: () => {
+      this.isLoading = false;
+    },
+    error: () => {
+      this.isLoading = false;
+    }
+  });
+}
+
 }

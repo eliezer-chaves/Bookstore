@@ -12,7 +12,7 @@ export const AUTH_ROUTES: Routes = [
     loadComponent: () => import('../../domain/auth/pages/login.page/login.page.component').then(m => m.LoginPageComponent)
   },
   {
-    path: 'register',
+    path: 'create-account',
     loadComponent: () => import('../../domain/auth/pages/create-account.page/create-account.page.component').then(m => m.CreateAccountPageComponent)
   }
 ];

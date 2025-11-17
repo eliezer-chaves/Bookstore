@@ -1,1 +1,0 @@
-import{Tb as o,Ub as a,tc as i,ub as t}from"./chunk-XE2QKQWL.js";var m=["class","page"],p=class n{static \u0275fac=function(e){return new(e||n)};static \u0275cmp=t({type:n,selectors:[["app-login",8,"page"]],attrs:m,decls:2,vars:0,template:function(e,c){e&1&&(o(0,"h2"),i(1,"login"),a())},encapsulation:2})};export{p as LoginPageComponent};

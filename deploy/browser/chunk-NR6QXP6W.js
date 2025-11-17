@@ -1,1 +1,0 @@
-import{Tb as e,Ub as n,tc as s,ub as a}from"./chunk-XE2QKQWL.js";var p=["class","layout"],r=class t{static \u0275fac=function(o){return new(o||t)};static \u0275cmp=a({type:t,selectors:[["app-dashboard",8,"layout"]],attrs:p,decls:2,vars:0,template:function(o,c){o&1&&(e(0,"p"),s(1,"dashboard.layout works!"),n())},encapsulation:2})};export{r as DashboardLayoutComponent};

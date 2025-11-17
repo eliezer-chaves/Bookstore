@@ -43,11 +43,11 @@ export class LoginPageComponent {
       if (usr_email && usr_password) {
         this.authService.login(usr_email, usr_password).subscribe({
           next: () => {
-            console.log('Login realizado com sucesso');
+            //console.log('Login realizado com sucesso');
             this.isLoading = false;
           },
           error: (err) => {
-            console.error('Login error:', err);
+            //console.error('Login error:', err);
             this.isLoading = false;
             // aqui você pode exibir mensagem de erro no layout
           }

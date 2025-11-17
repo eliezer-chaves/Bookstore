@@ -150,12 +150,13 @@ export class AuthService {
   }
 
   // Logout destrói o cookie no backend
-  logout(): void {
-    this.http.post(`${this.API_URL}/logout`, {}, { withCredentials: true }).subscribe({
-      next: () => this.performLogoutCleanup(),
-      error: () => this.performLogoutCleanup()
-    });
+  logout(): Observable<any> {
+    return this.http.post(`${this.API_URL}/logout`, {}, { withCredentials: true }).pipe(
+      tap(() => this.performLogoutCleanup())
+    );
   }
+
+
 
   private performLogoutCleanup(): void {
     this.clearSession();
