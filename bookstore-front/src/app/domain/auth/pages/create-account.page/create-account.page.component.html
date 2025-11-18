@@ -1,4 +1,4 @@
-<div class="card">
+<div class="auth-card" style="margin: 8px;">
     <h1 class="text-center">{{'domain.auth.pages.createAccount.title' | transloco}}</h1>
     <form nz-form [nzLayout]="'vertical'" [formGroup]="validateForm" (ngSubmit)="submitForm()" class="mt-md">
         <div class="d-flex-center" style="gap: 16px;">
@@ -22,7 +22,7 @@
             </nz-form-item>
         </div>
 
-        <nz-form-item class="mt-sm">
+        <nz-form-item class="mt-error">
             <nz-form-label>{{'domain.auth.pages.createAccount.labelPhone' | transloco}}</nz-form-label>
             <nz-form-control [nzErrorTip]="phoneErrorTpl">
                 <input nz-input formControlName="usr_phone" placeholder="(00) 0 0000-0000" />
@@ -32,7 +32,7 @@
                 </ng-template>
             </nz-form-control>
         </nz-form-item>
-        <nz-form-item class="mt-sm">
+        <nz-form-item class="mt-error">
             <nz-form-label>{{'domain.auth.pages.createAccount.labelEmail' | transloco}}</nz-form-label>
             <nz-form-control [nzErrorTip]="emailErrorTpl">
                 <input nz-input formControlName="usr_email" placeholder="{{'domain.auth.pages.createAccount.placeholderEmail' | transloco}}" />
@@ -42,7 +42,7 @@
                 </ng-template>
             </nz-form-control>
         </nz-form-item>
-        <nz-form-item class="mt-sm">
+        <nz-form-item class="mt-error">
             <nz-form-label>{{'domain.auth.pages.createAccount.labelPassword' | transloco}}</nz-form-label>
             <nz-form-control [nzErrorTip]="passwordErrorTpl">
                 <nz-input-password>
@@ -54,7 +54,7 @@
                 </ng-template>
             </nz-form-control>
         </nz-form-item>
-        <nz-form-item class="mt-sm">
+        <nz-form-item class="mt-error">
             <nz-form-label>{{'domain.auth.pages.createAccount.labelConfirmPassword' | transloco}}</nz-form-label>
             <nz-form-control [nzErrorTip]="confirmPasswordErrorTpl">
                 <nz-input-password>

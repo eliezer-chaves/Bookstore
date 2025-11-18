@@ -161,6 +161,7 @@ a {
   /* Margin */
   --margin-sm: 8px;
   --margin-md: 16px;
+  --margin-error: 24px;
   --margin-lg: 32px;
 
   /* Padding */
@@ -187,6 +188,9 @@ a {
 }
 .mt-md {
   margin-top: var(--margin-md) !important;
+}
+.mt-error{
+  margin-top: var(--margin-error) !important;
 }
 .mt-lg {
   margin-top: var(--margin-lg) !important;
@@ -349,20 +353,19 @@ input {
   padding: 10px !important;
 }
 
-.ant-input-affix-wrapper{
+.ant-input-affix-wrapper {
   padding: 0 !important;
 }
-.ant-input-suffix{
+.ant-input-suffix {
   margin: 10px;
-  font-size: 16px; 
+  font-size: 16px;
 }
-.ant-input-suffix svg{
+.ant-input-suffix svg {
   color: var(--light-text-gray);
 }
-.ant-input-suffix svg::hover{
+.ant-input-suffix svg::hover {
   color: var(--light-h1);
 }
-
 
 /* Button Primary NG-ZORRO */
 .ant-btn-primary {
@@ -379,3 +382,33 @@ input {
   margin: 0;
 }
 
+.auth-card {
+  
+  max-width: 400px;
+  background-color: var(--light-bg-white);
+  border-radius: 8px;
+  padding: var(--padding-lg) var(--padding-md);
+  border: solid 1px var(--light-border);
+}
+
+.auth-card .ant-form-item {
+  position: relative;
+  flex: 1;
+}
+
+.auth-card .ant-form-item-has-error .ant-form-item-control {
+  position: relative;
+}
+
+.auth-card .ant-form-item-explain {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  margin-top: 2px;
+}
+
+.auth-card .d-flex-center {
+  align-items: flex-start;
+}

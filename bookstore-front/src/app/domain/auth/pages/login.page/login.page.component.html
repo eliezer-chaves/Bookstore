@@ -1,4 +1,4 @@
-<div class="card">
+<div class="auth-card">
     <h1 class="text-center">{{'domain.auth.pages.login.loginTitle' | transloco}}</h1>
     <h2 class="text-center mt-md">{{'domain.auth.pages.login.loginSubtitle' | transloco}}</h2>
     <form nz-form [nzLayout]="'vertical'" [formGroup]="validateForm" (ngSubmit)="submitForm()" class="mt-md">
@@ -13,7 +13,7 @@
             </nz-form-control>
         </nz-form-item>
 
-        <nz-form-item class="mt-sm">
+        <nz-form-item class="mt-error">
             <nz-form-label>{{'domain.auth.pages.login.labelPassword' | transloco}}</nz-form-label>
             <nz-form-control [nzErrorTip]="passwordErrorTpl">
                 <nz-input-password>
