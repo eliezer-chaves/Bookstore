@@ -10,7 +10,11 @@
                     "placeholderEmail": "jean@email.com",
                     "textCreateAccount": "Vous n'avez pas encore de compte ?",
                     "buttonLogin": "Se connecter",
-                    "linkCreateAccount": " Créer un compte"
+                    "linkCreateAccount": " Créer un compte",
+                    "errorEmailRequired": "Veuillez saisir une adresse e-mail.",
+                    "errorEmailInvalid": "Veuillez saisir une adresse e-mail valide.",
+                    "errorPasswordRequired": "Veuillez saisir un mot de passe.",
+                    "errorPasswordMinLength": "Le mot de passe doit contenir au moins 6 caractères."
                 },
                 "createAccount": {
                     "title": "Créez votre compte",
@@ -25,7 +29,17 @@
                     "labelConfirmPassword": "Confirmer le mot de passe",
                     "buttonCreateAccount": "Créer un compte",
                     "textCreateAccount": "Vous avez déjà un compte ?",
-                    "linkLogin": " Se connecter"
+                    "linkLogin": " Se connecter",
+                    "errorFirstName": "Veuillez saisir votre prénom.",
+                    "errorLastName": "Veuillez saisir votre nom de famille.",
+                    "errorPhone": "Veuillez saisir un numéro de téléphone.",
+                    "errorPhoneInvalid": "Veuillez saisir un numéro de téléphone valide.",
+                    "errorEmail": "Veuillez saisir une adresse e-mail.",
+                    "errorEmailInvalid": "Veuillez saisir une adresse e-mail valide.",
+                    "errorPassword": "Veuillez saisir un mot de passe.",
+                    "errorPasswordMinLength": "Le mot de passe doit contenir au moins 6 caractères.",
+                    "errorConfirmPasswordRequired": "Veuillez confirmer votre mot de passe.",
+                    "errorConfirmPassword": "Les mots de passe ne correspondent pas."
                 }
             }
         },

@@ -10,7 +10,11 @@
                     "placeholderEmail": "max@email.com",
                     "textCreateAccount": "Sie haben noch kein Konto?",
                     "buttonLogin": "Anmelden",
-                    "linkCreateAccount": " Konto erstellen"
+                    "linkCreateAccount": " Konto erstellen",
+                    "errorEmailRequired": "Bitte geben Sie eine E-Mail-Adresse ein.",
+                    "errorEmailInvalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+                    "errorPasswordRequired": "Bitte geben Sie ein Passwort ein.",
+                    "errorPasswordMinLength": "Das Passwort muss mindestens 6 Zeichen lang sein."
                 },
                 "createAccount": {
                     "title": "Erstellen Sie Ihr Konto",
@@ -25,7 +29,17 @@
                     "labelConfirmPassword": "Passwort bestätigen",
                     "buttonCreateAccount": "Konto erstellen",
                     "textCreateAccount": "Sie haben bereits ein Konto?",
-                    "linkLogin": " Anmelden"
+                    "linkLogin": " Anmelden",
+                    "errorFirstName": "Bitte geben Sie Ihren Vornamen ein.",
+                    "errorLastName": "Bitte geben Sie Ihren Nachnamen ein.",
+                    "errorPhone": "Bitte geben Sie eine Telefonnummer ein.",
+                    "errorPhoneInvalid": "Bitte geben Sie eine gültige Telefonnummer ein.",
+                    "errorEmail": "Bitte geben Sie eine E-Mail-Adresse ein.",
+                    "errorEmailInvalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+                    "errorPassword": "Bitte geben Sie ein Passwort ein.",
+                    "errorPasswordMinLength": "Das Passwort muss mindestens 6 Zeichen lang sein.",
+                    "errorConfirmPasswordRequired": "Bitte bestätigen Sie Ihr Passwort.",
+                    "errorConfirmPassword": "Die Passwörter stimmen nicht überein."
                 }
             }
         },

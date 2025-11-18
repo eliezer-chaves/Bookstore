@@ -10,7 +10,11 @@
                     "placeholderEmail": "john@email.com",
                     "textCreateAccount": "Don't have an account yet?",
                     "buttonLogin": "Sign In",
-                    "linkCreateAccount": " Create Account"
+                    "linkCreateAccount": " Create Account",
+                    "errorEmailRequired": "Please enter an email address.",
+                    "errorEmailInvalid": "Please enter a valid email address.",
+                    "errorPasswordRequired": "Please enter a password.",
+                    "errorPasswordMinLength": "Password must be at least 6 characters long."
                 },
                 "createAccount": {
                     "title": "Create your account",
@@ -25,7 +29,17 @@
                     "labelConfirmPassword": "Confirm Password",
                     "buttonCreateAccount": "Create Account",
                     "textCreateAccount": "Already have an account?",
-                    "linkLogin": " Sign In"
+                    "linkLogin": " Sign In",
+                    "errorFirstName": "Please enter your first name.",
+                    "errorLastName": "Please enter your last name.",
+                    "errorPhone": "Please enter a phone number.",
+                    "errorPhoneInvalid": "Please enter a valid phone number.",
+                    "errorEmail": "Please enter an email address.",
+                    "errorEmailInvalid": "Please enter a valid email address.",
+                    "errorPassword": "Please enter a password.",
+                    "errorPasswordMinLength": "Password must be at least 6 characters long.",
+                    "errorConfirmPasswordRequired": "Please confirm your password.",
+                    "errorConfirmPassword": "Passwords do not match."
                 }
             }
         },

@@ -4,24 +4,27 @@
     <form nz-form [nzLayout]="'vertical'" [formGroup]="validateForm" (ngSubmit)="submitForm()" class="mt-md">
         <nz-form-item>
             <nz-form-label class="custom-label">{{'domain.auth.pages.login.labelEmail' | transloco}}</nz-form-label>
-            <nz-form-control nzErrorTip="Please input your email!">
+            <nz-form-control [nzErrorTip]="emailErrorTpl">
                 <input nz-input formControlName="usr_email" placeholder="{{'domain.auth.pages.login.placeholderEmail' | transloco}}" />
+                <ng-template #emailErrorTpl let-control>
+                    {{ control.errors?.['required'] ? ('domain.auth.pages.login.errorEmailRequired' | transloco) : '' }}
+                    {{ control.errors?.['email'] ? ('domain.auth.pages.login.errorEmailInvalid' | transloco) : '' }}
+                </ng-template>
             </nz-form-control>
         </nz-form-item>
 
         <nz-form-item class="mt-sm">
             <nz-form-label>{{'domain.auth.pages.login.labelPassword' | transloco}}</nz-form-label>
-            <nz-form-control nzErrorTip="Please input your password!">
-
+            <nz-form-control [nzErrorTip]="passwordErrorTpl">
                 <nz-input-password>
                     <input nz-input placeholder="••••••••" formControlName="usr_password" />
                 </nz-input-password>
+                <ng-template #passwordErrorTpl let-control>
+                    {{ control.errors?.['required'] ? ('domain.auth.pages.login.errorPasswordRequired' | transloco) : '' }}
+                    {{ control.errors?.['minlength'] ? ('domain.auth.pages.login.errorPasswordMinLength' | transloco) : '' }}
+                </ng-template>
             </nz-form-control>
         </nz-form-item>
-
-
-
-
 
         <div class="text-end mt-sm">
             <!-- <a routerLink="/home">Forgot your password?</a> -->
@@ -44,5 +47,4 @@
             </a>
         </div>
     </form>
-
 </div>

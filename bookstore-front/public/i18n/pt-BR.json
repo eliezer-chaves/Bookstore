@@ -10,7 +10,11 @@
                     "placeholderEmail": "joao@email.com",
                     "textCreateAccount": "Ainda não tem uma conta?",
                     "buttonLogin": "Entrar",
-                    "linkCreateAccount": " Criar Conta"
+                    "linkCreateAccount": " Criar Conta",
+                    "errorEmailRequired": "Por favor, insira um email.",
+                    "errorEmailInvalid": "Por favor, insira um email válido.",
+                    "errorPasswordRequired": "Por favor, insira uma senha.",
+                    "errorPasswordMinLength": "A senha deve ter pelo menos 8 caracteres."
                 },
                 "createAccount": {
                     "title": "Crie sua conta",
@@ -25,13 +29,23 @@
                     "labelConfirmPassword": "Confirmar Senha",
                     "buttonCreateAccount": "Criar Conta",
                     "textCreateAccount": "Já tem uma conta?",
-                    "linkLogin": " Entrar"
+                    "linkLogin": " Entrar",
+                    "errorFirstName": "Por favor, insira seu nome.",
+                    "errorLastName": "Por favor, insira seu sobrenome.",
+                    "errorPhone": "Por favor, insira um número de celular.",
+                    "errorPhoneInvalid": "Por favor, insira um número de celular válido.",
+                    "errorEmail": "Por favor, insira um email.",
+                    "errorEmailInvalid": "Por favor, insira um email válido.",
+                    "errorPassword": "Por favor, insira uma senha.",
+                    "errorPasswordMinLength": "A senha deve ter pelo menos 6 caracteres.",
+                    "errorConfirmPasswordRequired": "Por favor, confirme sua senha.",
+                    "errorConfirmPassword": "As senhas não coincidem."
                 }
             }
         },
-        "dashboard":{
-            "pages":{
-                "dashboard":{
+        "dashboard": {
+            "pages": {
+                "dashboard": {
                     "titleWelcome": "Bem vindo(a), ",
                     "buttonLogout": "Sair"
                 }
