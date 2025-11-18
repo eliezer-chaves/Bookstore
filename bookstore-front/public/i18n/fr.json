@@ -1,0 +1,18 @@
+{
+    "domain": {
+        "auth": {
+            "pages": {
+                "login": {
+                    "loginTitle": "Bon retour !",
+                    "loginSubtitle": "Veuillez saisir vos informations pour vous connecter.",
+                    "labelEmail": "E-mail",
+                    "labelPassword": "Mot de passe",
+                    "placeholderEmail": "jean@email.com",
+                    "textCreateAccount": "Vous n'avez pas encore de compte ?",
+                    "buttonLogin": "Se connecter",
+                    "linkCreateAccount": " Créer un compte"
+                }
+            }
+        }
+    }
+}

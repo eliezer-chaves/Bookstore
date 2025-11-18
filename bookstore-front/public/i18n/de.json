@@ -1,0 +1,18 @@
+{
+    "domain": {
+        "auth": {
+            "pages": {
+                "login": {
+                    "loginTitle": "Willkommen zurück!",
+                    "loginSubtitle": "Bitte geben Sie Ihre Daten ein, um sich anzumelden.",
+                    "labelEmail": "E-Mail",
+                    "labelPassword": "Passwort",
+                    "placeholderEmail": "max@email.com",
+                    "textCreateAccount": "Sie haben noch kein Konto?",
+                    "buttonLogin": "Anmelden",
+                    "linkCreateAccount": " Konto erstellen"
+                }
+            }
+        }
+    }
+}

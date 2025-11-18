@@ -1,0 +1,18 @@
+{
+    "domain":{
+        "auth": {
+            "pages": {
+                "login": {
+                    "loginTitle": "Bem-vindo de volta! ",
+                    "loginSubtitle": "Por favor, insira seus dados para entrar.",
+                    "labelEmail": "Email",
+                    "labelPassword": "Senha",
+                    "placeholderEmail": "joao@email.com",
+                    "textCreateAccount": "Ainda não tem uma conta?",
+                    "buttonLogin": "Entrar",
+                    "linkCreateAccount": " Criar Conta"
+                }
+            }
+        }
+    }
+}

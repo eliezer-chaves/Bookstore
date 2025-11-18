@@ -1,16 +1,16 @@
 <div class="card">
-    <h1 class="text-center">Welcome back!</h1>
-    <h2 class="text-center mt-md">Please enter your details to sign in.</h2>
+    <h1 class="text-center">{{'domain.auth.pages.login.loginTitle' | transloco}}</h1>
+    <h2 class="text-center mt-md">{{'domain.auth.pages.login.loginSubtitle' | transloco}}</h2>
     <form nz-form [nzLayout]="'vertical'" [formGroup]="validateForm" (ngSubmit)="submitForm()" class="mt-md">
         <nz-form-item>
-            <nz-form-label class="custom-label">Email</nz-form-label>
+            <nz-form-label class="custom-label">{{'domain.auth.pages.login.labelEmail' | transloco}}</nz-form-label>
             <nz-form-control nzErrorTip="Please input your email!">
-                <input nz-input formControlName="usr_email" placeholder="jhondoe@email.com" />
+                <input nz-input formControlName="usr_email" placeholder="{{'domain.auth.pages.login.placeholderEmail' | transloco}}" />
             </nz-form-control>
         </nz-form-item>
 
         <nz-form-item class="mt-sm">
-            <nz-form-label>Password</nz-form-label>
+            <nz-form-label>{{'domain.auth.pages.login.labelPassword' | transloco}}</nz-form-label>
             <nz-form-control nzErrorTip="Please input your password!">
 
                 <nz-input-password>
@@ -24,20 +24,24 @@
 
 
         <div class="text-end mt-sm">
-            <a routerLink="/home">Forgot your password?</a>
+            <!-- <a routerLink="/home">Forgot your password?</a> -->
         </div>
 
         <nz-form-item class="mt-md">
             <nz-form-control>
                 <button nz-button nzType="primary" nzBlock [nzLoading]="isLoading"
                     [disabled]="!validateForm.valid || isLoading">
-                    Login
+                    {{'domain.auth.pages.login.buttonLogin' | transloco}}
                 </button>
             </nz-form-control>
         </nz-form-item>
         <div class="text-center mt-sm">
-            <span style="color: var(--light-text-gray) !important;">Don’t have an account?</span> <a
-                routerLink="/auth/create-account"> Sign Up</a>
+            <span style="color: var(--light-text-gray) !important;">
+                {{'domain.auth.pages.login.textCreateAccount' | transloco}}
+            </span>
+            <a routerLink="/auth/create-account">
+                {{'domain.auth.pages.login.linkCreateAccount' | transloco}}
+            </a>
         </div>
     </form>
 

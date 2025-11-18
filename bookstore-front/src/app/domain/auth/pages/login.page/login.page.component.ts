@@ -16,10 +16,11 @@ import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { LoadingService } from '../../../../shared/services/loading.service';
 import { iUserLogin, iUserRegister } from '../../../../core/interfaces/iUser.interface';
 import { AuthService } from '../../../../core/services/auth.service';
+import { TranslocoModule } from '@jsverse/transloco';
 
 @Component({
   selector: 'app-login.page',
-  imports: [RouterLink, ReactiveFormsModule, FormsModule, NzFormModule, NzSelectModule, NzGridModule, NzDatePickerModule, NzRadioModule, NzInputModule, NzCheckboxModule, NzButtonModule, NzIconModule, NzInputNumberModule, NzTypographyModule, NzFlexModule],
+  imports: [RouterLink, ReactiveFormsModule, FormsModule, NzFormModule, NzSelectModule, NzGridModule, NzDatePickerModule, NzRadioModule, NzInputModule, NzCheckboxModule, NzButtonModule, NzIconModule, NzInputNumberModule, NzTypographyModule, NzFlexModule, TranslocoModule],
   templateUrl: './login.page.component.html',
   styleUrl: './login.page.component.css'
 })

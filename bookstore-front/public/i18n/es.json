@@ -1,0 +1,18 @@
+{
+    "domain":{
+        "auth": {
+            "pages": {
+                "login": {
+                    "loginTitle": "¡Bienvenido de nuevo!",
+                    "loginSubtitle": "Por favor, ingresa tus datos para iniciar sesión.",
+                    "labelEmail": "Correo electrónico",
+                    "labelPassword": "Contraseña",
+                    "placeholderEmail": "juan@email.com",
+                    "textCreateAccount": "¿Aún no tienes una cuenta?",
+                    "buttonLogin": "Iniciar Sesión",
+                    "linkCreateAccount": " Crear Cuenta"
+                }
+            }
+        }
+    }
+}

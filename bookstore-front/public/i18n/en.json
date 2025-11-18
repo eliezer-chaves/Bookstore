@@ -1,0 +1,18 @@
+{
+    "domain":{
+        "auth": {
+            "pages": {
+                "login": {
+                    "loginTitle": "Welcome back!",
+                    "loginSubtitle": "Please enter your details to sign in.",
+                    "labelEmail": "Email",
+                    "labelPassword": "Password",
+                    "placeholderEmail": "john@email.com",
+                    "textCreateAccount": "Don't have an account yet?",
+                    "buttonLogin": "Sign In",
+                    "linkCreateAccount": " Sign Up"
+                }
+            }
+        }
+    }
+}
