@@ -69,5 +69,9 @@
             "registerError": "Erro ao criar conta. Tente novamente.",
             "logoutSuccess": "Logout realizado com sucesso."
         }
+    },
+    "loader":{
+        "loading": "Carregando tema..."
     }
+    
 }

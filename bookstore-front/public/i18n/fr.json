@@ -69,5 +69,8 @@
             "registerError": "Erreur lors de la création du compte. Veuillez réessayer.",
             "logoutSuccess": "Déconnexion réussie."
         }
+    },
+    "loader":{
+        "loading": "Chargement du theme..."
     }
 }

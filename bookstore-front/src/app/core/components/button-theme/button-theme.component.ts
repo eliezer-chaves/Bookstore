@@ -1,22 +1,23 @@
-import { Component } from '@angular/core';
+// button-theme.component.ts
+import { Component, computed } from '@angular/core';
 import { ThemeService } from '../../services/theme.service';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
 
 @Component({
   selector: 'app-button-theme',
-  imports: [NzButtonModule],
+  imports: [NzButtonModule, NzIconModule, NzSpinModule],
   templateUrl: './button-theme.component.html',
   styleUrl: './button-theme.component.css',
 })
 export class ButtonThemeComponent {
-  isLight = true;
+  isDark = computed(() => this.themeService.theme() === 'dark');
+  isLoading = computed(() => this.themeService.isLoadingTheme());
 
-  constructor(private theme: ThemeService) {
-    this.isLight = this.theme.getCurrentTheme() === 'light';
-  }
+  constructor(private themeService: ThemeService) { }
 
-  toggleTheme() {
-    this.theme.toggle();
-    this.isLight = !this.isLight;
+  onToggle() {
+    this.themeService.toggleTheme();
   }
 }

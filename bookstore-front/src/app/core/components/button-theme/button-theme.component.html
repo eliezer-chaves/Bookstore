@@ -1,12 +1,23 @@
-<div class="absolute">
-    <button nz-button nzShape="circle" (click)="toggleTheme()" class="theme-toggle-btn">
-        @if(isLight){
-        <span >🌙</span>
-        }
-        @else {
-        <span >☀️</span>
-
-        }
-        
-    </button>
+<div class="theme-toggle-container">
+  <button 
+    nz-button 
+    nzType="default" 
+    class="theme-toggle-glass" 
+    [class.dark-mode]="isDark()"
+    (click)="onToggle()">
+    
+    <!-- Clouds -->
+    <div class="clouds"></div>
+    
+    <!-- Stars -->
+    <div class="stars">✦ ✦ ✦</div>
+    
+    <!-- Icon (Sun/Moon) -->
+    @if(isDark()){
+      <span class="icon">🌙</span>
+    }
+    @else {
+      <span class="icon">☀️</span>
+    }
+  </button>
 </div>

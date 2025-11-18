@@ -1,16 +1,188 @@
-.absolute {
-  position: absolute;
+.theme-toggle-container {
+  position: fixed;
   bottom: 16px;
   right: 16px;
-  z-index: 1000;
+  z-index: 1500;
+  --toggle-size: 30px;
+  font-size: var(--toggle-size);
 }
-.theme-toggle-btn {
-  font-size: 20px;
+
+.theme-toggle-glass {
+  width: 5.625em;
+  height: 2.5em;
+  border-radius: 6.25em;
+  border: none;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.5s cubic-bezier(0, -0.02, 0.4, 1.25);
+  box-shadow: 0em -0.062em 0.062em rgba(0, 0, 0, 0.25), 
+              0em 0.062em 0.125em rgba(255, 255, 255, 0.94);
+}
+
+/* Light mode (Sol) */
+.theme-toggle-glass:not(.dark-mode) {
+  background-color: #3D7EAE;
+}
+
+/* Dark mode (Lua) */
+.theme-toggle-glass.dark-mode {
+  background-color: #1D1F2C;
+}
+
+/* Inner shadow */
+.theme-toggle-glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-shadow: 0em 0.05em 0.187em rgba(0, 0, 0, 0.25) inset;
+  border-radius: 6.25em;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Circle container */
+.theme-toggle-glass::after {
+  content: "";
+  width: 3.375em;
+  height: 3.375em;
+  background-color: rgba(255, 255, 255, 0.1);
+  position: absolute;
+  top: -0.4375em;
+  border-radius: 6.25em;
+  box-shadow: inset 0 0 0 3.375em rgba(255, 255, 255, 0.1),
+              0 0 0 0.625em rgba(255, 255, 255, 0.1),
+              0 0 0 1.25em rgba(255, 255, 255, 0.1);
+  transition: 0.3s cubic-bezier(0, -0.02, 0.35, 1.17);
+  z-index: 2;
+}
+
+/* Position for light mode */
+.theme-toggle-glass:not(.dark-mode)::after {
+  left: -0.4375em;
+}
+
+/* Position for dark mode */
+.theme-toggle-glass.dark-mode::after {
+  left: calc(100% - 3.375em + 0.4375em);
+}
+
+/* Hover effect */
+.theme-toggle-glass:not(.dark-mode):hover::after {
+  left: -0.25em;
+}
+
+.theme-toggle-glass.dark-mode:hover::after {
+  left: calc(100% - 3.375em + 0.25em);
+}
+
+/* Icon container */
+.theme-toggle-glass .icon {
+  position: absolute;
+  width: 2.125em;
+  height: 2.125em;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.3s ease;
+  font-size: 1.2em;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: 0.5s cubic-bezier(0, -0.02, 0.4, 1.25);
+  z-index: 3;
+  filter: drop-shadow(0.062em 0.125em 0.125em rgba(0, 0, 0, 0.25));
 }
-.theme-toggle-btn:hover {
-  transform: scale(1.1);
+
+/* Sun styling */
+.theme-toggle-glass:not(.dark-mode) .icon {
+  left: 0.625em;
+  background: linear-gradient(135deg, #ECCA2F 0%, #f0d040 100%);
+  box-shadow: 0.062em 0.062em 0.062em 0em rgba(254, 255, 239, 0.61) inset,
+              0em -0.062em 0.062em 0em #a1872a inset;
+}
+
+/* Moon styling */
+.theme-toggle-glass.dark-mode .icon {
+  left: calc(100% - 2.125em - 0.625em);
+  background: linear-gradient(135deg, #C4C9D1 0%, #d4d9e1 100%);
+  box-shadow: 0.062em 0.062em 0.062em 0em rgba(254, 255, 239, 0.61) inset,
+              0em -0.062em 0.062em 0em #969696 inset;
+}
+
+/* Clouds */
+.theme-toggle-glass .clouds {
+  width: 1.25em;
+  height: 1.25em;
+  background-color: #F3FDFF;
+  border-radius: 6.25em;
+  position: absolute;
+  bottom: -0.625em;
+  left: 0.312em;
+  box-shadow: 0.937em 0.312em #F3FDFF, 
+              -0.312em -0.312em #AACADF, 
+              1.437em 0.375em #F3FDFF,
+              0.5em -0.125em #AACADF,
+              2.187em 0 #F3FDFF,
+              1.25em -0.062em #AACADF,
+              2.937em 0.312em #F3FDFF,
+              2em -0.312em #AACADF,
+              3.625em -0.062em #F3FDFF,
+              2.625em 0em #AACADF,
+              4.5em -0.312em #F3FDFF;
+  transition: 0.5s cubic-bezier(0, -0.02, 0.4, 1.25);
+  z-index: 0;
+}
+
+.theme-toggle-glass.dark-mode .clouds {
+  bottom: -4.062em;
+}
+
+/* Stars */
+.theme-toggle-glass .stars {
+  position: absolute;
+  color: #fff;
+  left: 0.5em;
+  width: 2.75em;
+  height: 1.5em;
+  transition: 0.5s cubic-bezier(0, -0.02, 0.4, 1.25);
+  z-index: 0;
+  font-size: 0.8em;
+}
+
+.theme-toggle-glass:not(.dark-mode) .stars {
+  top: -100%;
+  opacity: 0;
+}
+
+.theme-toggle-glass.dark-mode .stars {
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 1;
+}
+
+.theme-toggle-glass .stars::before,
+.theme-toggle-glass .stars::after {
+  content: "✦";
+  position: absolute;
+  font-size: 1em;
+}
+
+.theme-toggle-glass .stars::before {
+  left: 0.5em;
+  top: 0;
+}
+
+.theme-toggle-glass .stars::after {
+  right: 0.5em;
+  bottom: 0;
+}
+
+/* Remove default button styles */
+.theme-toggle-glass:focus {
+  outline: none;
+}
+
+.theme-toggle-glass:active::after {
+  transform: scale(0.95);
 }

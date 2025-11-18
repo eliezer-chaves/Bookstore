@@ -1,0 +1,365 @@
+/* RESET - Meyer */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+  font-family: "Inter", sans-serif;
+  font-size: clamp(16px, 1.2vw, 18px);
+  background-color: @bg-body;
+  color: @text-gray;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+
+  &:before,
+  &:after {
+    content: "";
+  }
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1 {
+  color: @text-h1;
+}
+
+h2 {
+  color: @text-h2;
+}
+h1 {
+  font-weight: 700;
+  font-size: clamp(28px, 4vw, 35px);
+}
+h2 {
+  font-weight: 400;
+  font-size: clamp(16px, 2vw, 20px);
+}
+
+/* ===========================
+   UTILIDADES
+=========================== */
+.m-sm {
+  margin: @margin-sm;
+}
+.m-md {
+  margin: @margin-md;
+}
+.m-lg {
+  margin: @margin-lg;
+}
+
+.mt-sm {
+  margin-top: @margin-sm !important;
+}
+.mt-md {
+  margin-top: @margin-md !important;
+}
+.mt-error {
+  margin-top: @margin-error !important;
+}
+.mt-lg {
+  margin-top: @margin-lg !important;
+}
+
+.mb-sm {
+  margin-bottom: @margin-sm;
+}
+.mb-md {
+  margin-bottom: @margin-md;
+}
+.mb-lg {
+  margin-bottom: @margin-lg;
+}
+
+.ms-sm {
+  margin-left: @margin-sm;
+}
+.ms-md {
+  margin-left: @margin-md;
+}
+.ms-lg {
+  margin-left: @margin-lg;
+}
+
+.me-sm {
+  margin-right: @margin-sm;
+}
+.me-md {
+  margin-right: @margin-md;
+}
+.me-lg {
+  margin-right: @margin-lg;
+}
+
+/* Padding */
+.pt-sm {
+  padding-top: @padding-sm;
+}
+.pt-md {
+  padding-top: @padding-md;
+}
+.pt-lg {
+  padding-top: @padding-lg;
+}
+
+.pb-sm {
+  padding-bottom: @padding-sm;
+}
+.pb-md {
+  padding-bottom: @padding-md;
+}
+.pb-lg {
+  padding-bottom: @padding-lg;
+}
+
+.p-sm {
+  padding: @padding-sm;
+}
+.p-md {
+  padding: @padding-md;
+}
+.p-lg {
+  padding: @padding-lg;
+}
+
+.text-center {
+  text-align: center;
+}
+.text-end {
+  text-align: right;
+}
+
+.d-flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ===========================
+   FORM / INPUTS
+=========================== */
+
+input {
+  border-radius: 81px;
+  height: 44px;
+}
+
+.ant-input {
+  border-radius: 4px;
+  padding: 10px !important;
+}
+
+.ant-input-affix-wrapper {
+  padding: 0 !important;
+}
+
+.ant-input-suffix {
+  margin: 10px;
+  font-size: 16px;
+
+  svg {
+    color: @input-suffix-color;
+  }
+}
+
+/* Labels */
+::ng-deep .ant-form-item-label > label,
+::ng-deep nz-form-label label {
+  margin: 0 !important;
+  padding: 0 !important;
+  color: @label-color !important;
+  font-size: 14px !important;
+}
+
+.ant-form-vertical .ant-form-item-label,
+.ant-col-24.ant-form-item-label,
+.ant-col-xl-24.ant-form-item-label {
+  padding: 0 !important; // remove
+}
+
+.ant-form-item {
+  margin: 0;
+}
+
+/* Botões */
+.ant-btn-primary {
+  height: 44px;
+  font-size: 16px;
+  border-radius: 8px;
+  padding: 10px;
+  color: @btn-primary-text;
+  background: @btn-primary-bg;
+}
+
+/* Cards */
+.auth-card {
+  min-width: 340px;
+  max-width: 400px;
+  background-color: @card-bg;
+  border-radius: 8px;
+  padding: @padding-lg @padding-md;
+  border: solid 1px @card-border;
+}
+
+//links
+a.link-primary,
+a[routerLink] {
+  color: @link-color !important;
+}
+/* Base para posicionar a mensagem */
+.ant-form-item .ant-form-item-control {
+  position: relative;
+}
+
+/* Mensagem de erro absoluta */
+.ant-form-item .ant-form-item-explain,
+.ant-form-item .ant-form-item-explain-error {
+  position: absolute;
+  top: calc(100%);
+  left: 0;
+  width: 100%;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #ff4d4f;
+
+  pointer-events: none;
+
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: all .2s ease-out;
+}
+
+/* Quando o input está com erro */
+.ant-form-item-has-error .ant-form-item-explain,
+.ant-form-item-has-error .ant-form-item-explain-error {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* REMOVE o espaço que o NG-Zorro cria */
+.ant-form-item-with-help .ant-form-item-explain,
+.ant-form-item-with-help .ant-form-item-explain-error {
+  min-height: 0 !important;
+  height: 0 !important;
+  overflow: visible !important;
+}

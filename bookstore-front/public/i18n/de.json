@@ -69,5 +69,8 @@
             "registerError": "Fehler beim Erstellen des Kontos. Bitte versuchen Sie es erneut.",
             "logoutSuccess": "Abmeldung erfolgreich."
         }
+    },
+    "loader": {
+        "loading": "Lade Thema..."
     }
 }

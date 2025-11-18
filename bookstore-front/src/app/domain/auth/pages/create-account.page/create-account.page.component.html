@@ -1,7 +1,7 @@
-<div class="auth-card" style="margin: 8px;">
+<div class="auth-card" >
     <h1 class="text-center">{{'domain.auth.pages.createAccount.title' | transloco}}</h1>
     <form nz-form [nzLayout]="'vertical'" [formGroup]="validateForm" (ngSubmit)="submitForm()" class="mt-md">
-        <div class="d-flex-center" style="gap: 16px;">
+        <div class="d-flex-center" style="gap: 8px;">
             <nz-form-item>
                 <nz-form-label class="custom-label">{{'domain.auth.pages.createAccount.labelFirstName' | transloco}}</nz-form-label>
                 <nz-form-control [nzErrorTip]="firstNameErrorTpl">
@@ -75,8 +75,8 @@
             </nz-form-control>
         </nz-form-item>
         <div class="text-center mt-sm">
-            <span style="color: var(--light-text-gray) !important;">{{'domain.auth.pages.createAccount.textCreateAccount' | transloco}}</span>
-            <a routerLink="/auth/login" style="color: var( --primary-blue)!important;">{{'domain.auth.pages.createAccount.linkLogin' | transloco}}</a>
+            <span >{{'domain.auth.pages.createAccount.textCreateAccount' | transloco}}</span>
+            <a routerLink="/auth/login" >{{'domain.auth.pages.createAccount.linkLogin' | transloco}}</a>
         </div>
     </form>
 </div>

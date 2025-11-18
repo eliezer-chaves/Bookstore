@@ -69,5 +69,8 @@
             "registerError": "Error creating account. Please try again.",
             "logoutSuccess": "Logout successful."
         }
+    },
+    "loader":{
+        "loading": "Loading theme..."
     }
 }
