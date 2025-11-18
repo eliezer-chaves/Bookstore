@@ -16,7 +16,9 @@ import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { LoadingService } from '../../../../shared/services/loading.service';
 import { iUserLogin, iUserRegister } from '../../../../core/interfaces/iUser.interface';
 import { AuthService } from '../../../../core/services/auth.service';
-import { TranslocoModule } from '@jsverse/transloco';
+import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { ErrorTranslationService } from '../../../../core/services/error-translation.service';
 
 @Component({
   selector: 'app-login.page',
@@ -29,10 +31,16 @@ export class LoginPageComponent {
   isLoading = false;
 
   private fb = inject(NonNullableFormBuilder);
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService,
+    private notificationService: NzNotificationService,
+    private translocoService: TranslocoService,
+    private errorTranslationService: ErrorTranslationService,
+
+  ) { }
 
   validateForm = this.fb.group({
-    usr_email: this.fb.control('', [Validators.required]),
+    usr_email: this.fb.control('', [Validators.required, Validators.email]),
     usr_password: this.fb.control('', [Validators.required])
   });
 
@@ -48,9 +56,9 @@ export class LoginPageComponent {
             this.isLoading = false;
           },
           error: (err) => {
-            //console.error('Login error:', err);
+            const { title, message } = this.errorTranslationService.translateBackendError(err);
+            this.notificationService.error(title, message);
             this.isLoading = false;
-            // aqui você pode exibir mensagem de erro no layout
           }
         });
       }
