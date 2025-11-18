@@ -16,10 +16,11 @@ import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { LoadingService } from '../../../../shared/services/loading.service';
 import { AuthService } from '../../../../core/services/auth.service';
 import { iUser, iUserRegister } from '../../../../core/interfaces/iUser.interface';
+import { TranslocoModule } from '@jsverse/transloco';
 
 @Component({
   selector: 'app-create-account.page',
-  imports: [RouterLink, ReactiveFormsModule, FormsModule, NzFormModule, NzInputModule, NzSelectModule, NzGridModule, NzDatePickerModule, NzRadioModule, NzCheckboxModule, NzButtonModule, NzIconModule, NzInputNumberModule, NzTypographyModule, NzFlexModule],
+  imports: [RouterLink, ReactiveFormsModule, FormsModule, NzFormModule, NzInputModule, NzSelectModule, NzGridModule, NzDatePickerModule, NzRadioModule, NzCheckboxModule, NzButtonModule, NzIconModule, NzInputNumberModule, NzTypographyModule, NzFlexModule, TranslocoModule],
   templateUrl: './create-account.page.component.html',
   styleUrl: './create-account.page.component.css'
 })

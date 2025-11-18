@@ -11,6 +11,29 @@
                     "textCreateAccount": "Sie haben noch kein Konto?",
                     "buttonLogin": "Anmelden",
                     "linkCreateAccount": " Konto erstellen"
+                },
+                "createAccount": {
+                    "title": "Erstellen Sie Ihr Konto",
+                    "labelFirstName": "Vorname",
+                    "placeholderFirstName": "Max",
+                    "labelLastName": "Nachname",
+                    "placeholderLastName": "Mustermann",
+                    "labelPhone": "Telefon",
+                    "labelEmail": "E-Mail",
+                    "placeholderEmail": "max@email.com",
+                    "labelPassword": "Passwort",
+                    "labelConfirmPassword": "Passwort bestätigen",
+                    "buttonCreateAccount": "Konto erstellen",
+                    "textCreateAccount": "Sie haben bereits ein Konto?",
+                    "linkLogin": " Anmelden"
+                }
+            }
+        },
+        "dashboard": {
+            "pages": {
+                "dashboard": {
+                    "titleWelcome": "Willkommen, ",
+                    "buttonLogout": "Abmelden"
                 }
             }
         }

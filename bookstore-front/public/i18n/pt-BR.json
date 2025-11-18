@@ -1,5 +1,5 @@
 {
-    "domain":{
+    "domain": {
         "auth": {
             "pages": {
                 "login": {
@@ -11,6 +11,29 @@
                     "textCreateAccount": "Ainda não tem uma conta?",
                     "buttonLogin": "Entrar",
                     "linkCreateAccount": " Criar Conta"
+                },
+                "createAccount": {
+                    "title": "Crie sua conta",
+                    "labelFirstName": "Nome",
+                    "placeholderFirstName": "João",
+                    "labelLastName": "Sobrenome",
+                    "placeholderLastName": "Silva",
+                    "labelPhone": "Celular",
+                    "labelEmail": "Email",
+                    "placeholderEmail": "joao@email.com",
+                    "labelPassword": "Senha",
+                    "labelConfirmPassword": "Confirmar Senha",
+                    "buttonCreateAccount": "Criar Conta",
+                    "textCreateAccount": "Já tem uma conta?",
+                    "linkLogin": " Entrar"
+                }
+            }
+        },
+        "dashboard":{
+            "pages":{
+                "dashboard":{
+                    "titleWelcome": "Bem vindo(a), ",
+                    "buttonLogout": "Sair"
                 }
             }
         }

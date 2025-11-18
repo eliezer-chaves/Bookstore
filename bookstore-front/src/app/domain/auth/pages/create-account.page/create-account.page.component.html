@@ -1,35 +1,35 @@
 <div class="card">
-    <h1 class="text-center">Create Your Account</h1>
+    <h1 class="text-center">{{'domain.auth.pages.createAccount.title' | transloco}}</h1>
     <form nz-form [nzLayout]="'vertical'" [formGroup]="validateForm" (ngSubmit)="submitForm()" class="mt-md">
         <div class="d-flex-center" style="gap: 16px;">
             <nz-form-item>
-                <nz-form-label class="custom-label">First Name</nz-form-label>
+                <nz-form-label class="custom-label">{{'domain.auth.pages.createAccount.labelFirstName' | transloco}}</nz-form-label>
                 <nz-form-control nzErrorTip="Please input your first name!">
-                    <input nz-input formControlName="usr_first_name" placeholder="Jhon" />
+                    <input nz-input formControlName="usr_first_name" placeholder="{{'domain.auth.pages.createAccount.placeholderFirstName' | transloco}}" />
                 </nz-form-control>
             </nz-form-item>
             <nz-form-item>
-                <nz-form-label class="custom-label">Last Name</nz-form-label>
+                <nz-form-label class="custom-label">{{'domain.auth.pages.createAccount.labelLastName' | transloco}}</nz-form-label>
                 <nz-form-control nzErrorTip="Please input your last name!">
-                    <input nz-input formControlName="usr_last_name" placeholder="Doe" />
+                    <input nz-input formControlName="usr_last_name" placeholder="{{'domain.auth.pages.createAccount.placeholderLastName' | transloco}}"/>
                 </nz-form-control>
             </nz-form-item>
         </div>
 
         <nz-form-item class="mt-sm">
-            <nz-form-label>Phone</nz-form-label>
+            <nz-form-label>{{'domain.auth.pages.createAccount.labelPhone' | transloco}}</nz-form-label>
             <nz-form-control nzErrorTip="Please input your phone number!">
                 <input nz-input formControlName="usr_phone" placeholder="(00) 0 0000-0000" />
             </nz-form-control>
         </nz-form-item>
         <nz-form-item class="mt-sm">
-            <nz-form-label>Email</nz-form-label>
+            <nz-form-label>{{'domain.auth.pages.createAccount.labelEmail' | transloco}}</nz-form-label>
             <nz-form-control nzErrorTip="Please input your email!">
-                <input nz-input formControlName="usr_email" placeholder="jhondoe@email.com" />
+                <input nz-input formControlName="usr_email" placeholder="{{'domain.auth.pages.createAccount.placeholderEmail' | transloco}}" />
             </nz-form-control>
         </nz-form-item>
         <nz-form-item class="mt-sm">
-            <nz-form-label>Password</nz-form-label>
+            <nz-form-label>{{'domain.auth.pages.createAccount.labelPassword' | transloco}}</nz-form-label>
             <nz-form-control nzErrorTip="Please input your password!">
                 <nz-input-password>
                     <input nz-input placeholder="••••••••" formControlName="usr_password" />
@@ -37,7 +37,7 @@
             </nz-form-control>
         </nz-form-item>
         <nz-form-item class="mt-sm">
-            <nz-form-label>Confirm Password</nz-form-label>
+            <nz-form-label>{{'domain.auth.pages.createAccount.labelConfirmPassword' | transloco}}</nz-form-label>
             <nz-form-control nzErrorTip="Please input your password!">
                 <nz-input-password>
                     <input nz-input placeholder="••••••••" formControlName="usr_password_confirmation" />
@@ -48,13 +48,13 @@
             <nz-form-control>
                 <button nz-button nzType="primary" nzBlock [nzLoading]="isLoading"
                     [disabled]="!validateForm.valid || isLoading">
-                    Create Account
+                    {{'domain.auth.pages.createAccount.buttonCreateAccount' | transloco}}
                 </button>
             </nz-form-control>
         </nz-form-item>
         <div class="text-center mt-sm">
-            <span style="color: var(--light-text-gray) !important;">Already have an account?</span>
-            <a routerLink="/auth/login"> Sign In</a>
+            <span style="color: var(--light-text-gray) !important;">{{'domain.auth.pages.createAccount.textCreateAccount' | transloco}}</span>
+            <a routerLink="/auth/login" style="color: var( --primary-blue)!important;">{{'domain.auth.pages.createAccount.linkLogin' | transloco}}</a>
         </div>
     </form>
 

@@ -11,6 +11,29 @@
                     "textCreateAccount": "Vous n'avez pas encore de compte ?",
                     "buttonLogin": "Se connecter",
                     "linkCreateAccount": " Créer un compte"
+                },
+                "createAccount": {
+                    "title": "Créez votre compte",
+                    "labelFirstName": "Prénom",
+                    "placeholderFirstName": "Jean",
+                    "labelLastName": "Nom de famille",
+                    "placeholderLastName": "Dupont",
+                    "labelPhone": "Téléphone",
+                    "labelEmail": "E-mail",
+                    "placeholderEmail": "jean@email.com",
+                    "labelPassword": "Mot de passe",
+                    "labelConfirmPassword": "Confirmer le mot de passe",
+                    "buttonCreateAccount": "Créer un compte",
+                    "textCreateAccount": "Vous avez déjà un compte ?",
+                    "linkLogin": " Se connecter"
+                }
+            }
+        },
+        "dashboard": {
+            "pages": {
+                "dashboard": {
+                    "titleWelcome": "Bienvenue, ",
+                    "buttonLogout": "Déconnexion"
                 }
             }
         }
