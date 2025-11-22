@@ -72,6 +72,14 @@
     },
     "loader":{
         "loading": "Carregando tema..."
+    },
+    "core":{
+        "components":{
+            "buttonTheme":{
+                "lightMode": "Modo Claro",
+                "darkMode": "Modo Escuro"
+            }
+        }
     }
     
 }

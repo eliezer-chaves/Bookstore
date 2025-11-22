@@ -1,76 +1,84 @@
 {
-    "domain": {
-        "auth": {
-            "pages": {
-                "login": {
-                    "loginTitle": "Welcome back!",
-                    "loginSubtitle": "Please enter your details to sign in.",
-                    "labelEmail": "Email",
-                    "labelPassword": "Password",
-                    "placeholderEmail": "john@email.com",
-                    "textCreateAccount": "Don't have an account yet?",
-                    "buttonLogin": "Sign In",
-                    "linkCreateAccount": " Create Account",
-                    "errorEmailRequired": "Please enter an email address.",
-                    "errorEmailInvalid": "Please enter a valid email address.",
-                    "errorPasswordRequired": "Please enter a password.",
-                    "errorPasswordMinLength": "Password must be at least 8 characters long."
-                },
-                "createAccount": {
-                    "title": "Create your account",
-                    "labelFirstName": "First Name",
-                    "placeholderFirstName": "John",
-                    "labelLastName": "Last Name",
-                    "placeholderLastName": "Doe",
-                    "labelPhone": "Phone",
-                    "labelEmail": "Email",
-                    "placeholderEmail": "john@email.com",
-                    "labelPassword": "Password",
-                    "labelConfirmPassword": "Confirm Password",
-                    "buttonCreateAccount": "Create Account",
-                    "textCreateAccount": "Already have an account?",
-                    "linkLogin": " Sign In",
-                    "errorFirstName": "Please enter your first name.",
-                    "errorLastName": "Please enter your last name.",
-                    "errorPhone": "Please enter a phone number.",
-                    "errorPhoneInvalid": "Please enter a valid phone number.",
-                    "errorEmail": "Please enter an email address.",
-                    "errorEmailInvalid": "Please enter a valid email address.",
-                    "errorPassword": "Please enter a password.",
-                    "errorPasswordMinLength": "Password must be at least 6 characters long.",
-                    "errorConfirmPasswordRequired": "Please confirm your password.",
-                    "errorConfirmPassword": "Passwords do not match."
-                }
-            }
+  "domain": {
+    "auth": {
+      "pages": {
+        "login": {
+          "loginTitle": "Welcome back!",
+          "loginSubtitle": "Please enter your details to log in.",
+          "labelEmail": "Email",
+          "labelPassword": "Password",
+          "placeholderEmail": "john@email.com",
+          "textCreateAccount": "Don't have an account?",
+          "buttonLogin": "Login",
+          "linkCreateAccount": " Create Account",
+          "errorEmailRequired": "Please enter an email.",
+          "errorEmailInvalid": "Please enter a valid email.",
+          "errorPasswordRequired": "Please enter a password.",
+          "errorPasswordMinLength": "Password must be at least 8 characters."
         },
+        "createAccount": {
+          "title": "Create your account",
+          "labelFirstName": "First Name",
+          "placeholderFirstName": "John",
+          "labelLastName": "Last Name",
+          "placeholderLastName": "Smith",
+          "labelPhone": "Phone",
+          "labelEmail": "Email",
+          "placeholderEmail": "john@email.com",
+          "labelPassword": "Password",
+          "labelConfirmPassword": "Confirm Password",
+          "buttonCreateAccount": "Create Account",
+          "textCreateAccount": "Already have an account?",
+          "linkLogin": " Login",
+          "errorFirstName": "Please enter your first name.",
+          "errorLastName": "Please enter your last name.",
+          "errorPhone": "Please enter a phone number.",
+          "errorPhoneInvalid": "Please enter a valid phone number.",
+          "errorEmail": "Please enter an email.",
+          "errorEmailInvalid": "Please enter a valid email.",
+          "errorPassword": "Please enter a password.",
+          "errorPasswordMinLength": "Password must be at least 6 characters.",
+          "errorConfirmPasswordRequired": "Please confirm your password.",
+          "errorConfirmPassword": "Passwords do not match."
+        }
+      }
+    },
+    "dashboard": {
+      "pages": {
         "dashboard": {
-            "pages": {
-                "dashboard": {
-                    "titleWelcome": "Welcome, ",
-                    "buttonLogout": "Logout"
-                }
-            }
+          "titleWelcome": "Welcome, ",
+          "buttonLogout": "Logout"
         }
-    },
-    "errors": {
-        "notifications": {
-            "loginErrorTitle": "Login Error",
-            "genericError": "An unexpected error occurred. Please try again.",
-            "unauthenticated": "Session expired. Please log in again.",
-            "serverError": "Internal server error. Please try again later.",
-            "invalidCredentials": "Incorrect email or password.",
-            "userNotFound": "User not found.",
-            "accountLocked": "Account locked. Please contact support.",
-            "emailNotVerified": "Email not verified. Please check your inbox.",
-            "validationError": "Invalid data. Please check the provided information.",
-            "updateError": "Error updating data. Please try again.",
-            "invalidPassword": "Current password is incorrect.",
-            "registerSuccess": "Account created successfully!",
-            "registerError": "Error creating account. Please try again.",
-            "logoutSuccess": "Logout successful."
-        }
-    },
-    "loader":{
-        "loading": "Loading theme..."
+      }
     }
+  },
+  "errors": {
+    "notifications": {
+      "loginErrorTitle": "Login Error",
+      "genericError": "An unexpected error occurred. Please try again.",
+      "unauthenticated": "Session expired. Please log in again.",
+      "serverError": "Internal server error. Please try again later.",
+      "invalidCredentials": "Incorrect email or password.",
+      "userNotFound": "User not found.",
+      "accountLocked": "Account locked. Contact support.",
+      "emailNotVerified": "Email not verified. Check your inbox.",
+      "validationError": "Invalid data. Please review the information provided.",
+      "updateError": "Error updating data. Please try again.",
+      "invalidPassword": "Incorrect current password.",
+      "registerSuccess": "Account created successfully!",
+      "registerError": "Error creating account. Please try again.",
+      "logoutSuccess": "Logout completed successfully."
+    }
+  },
+  "loader": {
+    "loading": "Loading theme..."
+  },
+  "core": {
+    "components": {
+      "buttonTheme": {
+        "lightMode": "Light Mode",
+        "darkMode": "Dark Mode"
+      }
+    }
+  }
 }

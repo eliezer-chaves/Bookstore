@@ -1,76 +1,84 @@
 {
-    "domain": {
-        "auth": {
-            "pages": {
-                "login": {
-                    "loginTitle": "¡Bienvenido de nuevo!",
-                    "loginSubtitle": "Por favor, ingresa tus datos para iniciar sesión.",
-                    "labelEmail": "Correo electrónico",
-                    "labelPassword": "Contraseña",
-                    "placeholderEmail": "juan@email.com",
-                    "textCreateAccount": "¿Aún no tienes una cuenta?",
-                    "buttonLogin": "Iniciar Sesión",
-                    "linkCreateAccount": " Crear Cuenta",
-                    "errorEmailRequired": "Por favor, ingresa un correo electrónico.",
-                    "errorEmailInvalid": "Por favor, ingresa un correo electrónico válido.",
-                    "errorPasswordRequired": "Por favor, ingresa una contraseña.",
-                    "errorPasswordMinLength": "La contraseña debe tener al menos 8 caracteres."
-                },
-                "createAccount": {
-                    "title": "Crea tu cuenta",
-                    "labelFirstName": "Nombre",
-                    "placeholderFirstName": "Juan",
-                    "labelLastName": "Apellido",
-                    "placeholderLastName": "García",
-                    "labelPhone": "Teléfono",
-                    "labelEmail": "Correo electrónico",
-                    "placeholderEmail": "juan@email.com",
-                    "labelPassword": "Contraseña",
-                    "labelConfirmPassword": "Confirmar Contraseña",
-                    "buttonCreateAccount": "Crear Cuenta",
-                    "textCreateAccount": "¿Ya tienes una cuenta?",
-                    "linkLogin": " Iniciar Sesión",
-                    "errorFirstName": "Por favor, ingresa tu nombre.",
-                    "errorLastName": "Por favor, ingresa tu apellido.",
-                    "errorPhone": "Por favor, ingresa un número de teléfono.",
-                    "errorPhoneInvalid": "Por favor, ingresa un número de teléfono válido.",
-                    "errorEmail": "Por favor, ingresa un correo electrónico.",
-                    "errorEmailInvalid": "Por favor, ingresa un correo electrónico válido.",
-                    "errorPassword": "Por favor, ingresa una contraseña.",
-                    "errorPasswordMinLength": "La contraseña debe tener al menos 6 caracteres.",
-                    "errorConfirmPasswordRequired": "Por favor, confirma tu contraseña.",
-                    "errorConfirmPassword": "Las contraseñas no coinciden."
-                }
-            }
+  "domain": {
+    "auth": {
+      "pages": {
+        "login": {
+          "loginTitle": "¡Bienvenido de nuevo!",
+          "loginSubtitle": "Por favor, ingrese sus datos para ingresar.",
+          "labelEmail": "Correo electrónico",
+          "labelPassword": "Contraseña",
+          "placeholderEmail": "juan@email.com",
+          "textCreateAccount": "¿No tienes una cuenta?",
+          "buttonLogin": "Ingresar",
+          "linkCreateAccount": " Crear Cuenta",
+          "errorEmailRequired": "Por favor, ingrese un correo electrónico.",
+          "errorEmailInvalid": "Por favor, ingrese un correo electrónico válido.",
+          "errorPasswordRequired": "Por favor, ingrese una contraseña.",
+          "errorPasswordMinLength": "La contraseña debe tener al menos 8 caracteres."
         },
+        "createAccount": {
+          "title": "Crea tu cuenta",
+          "labelFirstName": "Nombre",
+          "placeholderFirstName": "Juan",
+          "labelLastName": "Apellido",
+          "placeholderLastName": "Pérez",
+          "labelPhone": "Celular",
+          "labelEmail": "Correo electrónico",
+          "placeholderEmail": "juan@email.com",
+          "labelPassword": "Contraseña",
+          "labelConfirmPassword": "Confirmar Contraseña",
+          "buttonCreateAccount": "Crear Cuenta",
+          "textCreateAccount": "¿Ya tienes una cuenta?",
+          "linkLogin": " Ingresar",
+          "errorFirstName": "Por favor, ingrese su nombre.",
+          "errorLastName": "Por favor, ingrese su apellido.",
+          "errorPhone": "Por favor, ingrese un número de celular.",
+          "errorPhoneInvalid": "Por favor, ingrese un número de celular válido.",
+          "errorEmail": "Por favor, ingrese un correo electrónico.",
+          "errorEmailInvalid": "Por favor, ingrese un correo electrónico válido.",
+          "errorPassword": "Por favor, ingrese una contraseña.",
+          "errorPasswordMinLength": "La contraseña debe tener al menos 6 caracteres.",
+          "errorConfirmPasswordRequired": "Por favor, confirme su contraseña.",
+          "errorConfirmPassword": "Las contraseñas no coinciden."
+        }
+      }
+    },
+    "dashboard": {
+      "pages": {
         "dashboard": {
-            "pages": {
-                "dashboard": {
-                    "titleWelcome": "Bienvenido(a), ",
-                    "buttonLogout": "Cerrar Sesión"
-                }
-            }
+          "titleWelcome": "Bienvenido(a), ",
+          "buttonLogout": "Salir"
         }
-    },
-    "errors": {
-        "notifications": {
-            "loginErrorTitle": "Error de Inicio de Sesión",
-            "genericError": "Ocurrió un error inesperado. Por favor, intente nuevamente.",
-            "unauthenticated": "Sesión expirada. Por favor, inicie sesión nuevamente.",
-            "serverError": "Error interno del servidor. Por favor, intente más tarde.",
-            "invalidCredentials": "Correo electrónico o contraseña incorrectos.",
-            "userNotFound": "Usuario no encontrado.",
-            "accountLocked": "Cuenta bloqueada. Por favor, contacte al soporte.",
-            "emailNotVerified": "Correo electrónico no verificado. Por favor, revise su bandeja de entrada.",
-            "validationError": "Datos inválidos. Por favor, verifique la información proporcionada.",
-            "updateError": "Error al actualizar datos. Por favor, intente nuevamente.",
-            "invalidPassword": "La contraseña actual es incorrecta.",
-            "registerSuccess": "¡Cuenta creada exitosamente!",
-            "registerError": "Error al crear la cuenta. Por favor, intente nuevamente.",
-            "logoutSuccess": "Cierre de sesión exitoso."
-        }
-    },
-    "loader":{
-        "loading": "Cargando tema..."
+      }
     }
+  },
+  "errors": {
+    "notifications": {
+      "loginErrorTitle": "Error de Inicio de Sesión",
+      "genericError": "Ocurrió un error inesperado. Inténtalo de nuevo.",
+      "unauthenticated": "Sesión expirada. Inicie sesión nuevamente.",
+      "serverError": "Error interno del servidor. Inténtalo más tarde.",
+      "invalidCredentials": "Correo o contraseña incorrectos.",
+      "userNotFound": "Usuario no encontrado.",
+      "accountLocked": "Cuenta bloqueada. Contacte al soporte.",
+      "emailNotVerified": "Correo no verificado. Revisa tu bandeja de entrada.",
+      "validationError": "Datos inválidos. Verifique la información proporcionada.",
+      "updateError": "Error al actualizar los datos. Inténtalo de nuevo.",
+      "invalidPassword": "Contraseña actual incorrecta.",
+      "registerSuccess": "¡Cuenta creada con éxito!",
+      "registerError": "Error al crear la cuenta. Inténtalo de nuevo.",
+      "logoutSuccess": "Cierre de sesión exitoso."
+    }
+  },
+  "loader": {
+    "loading": "Cargando tema..."
+  },
+  "core": {
+    "components": {
+      "buttonTheme": {
+        "lightMode": "Modo Claro",
+        "darkMode": "Modo Oscuro"
+      }
+    }
+  }
 }

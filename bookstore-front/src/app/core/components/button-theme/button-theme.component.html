@@ -1,23 +1,12 @@
-<div class="theme-toggle-container">
-  <button 
-    nz-button 
-    nzType="default" 
-    class="theme-toggle-glass" 
-    [class.dark-mode]="isDark()"
-    (click)="onToggle()">
-    
-    <!-- Clouds -->
-    <div class="clouds"></div>
-    
-    <!-- Stars -->
-    <div class="stars">✦ ✦ ✦</div>
-    
-    <!-- Icon (Sun/Moon) -->
-    @if(isDark()){
-      <span class="icon">🌙</span>
-    }
-    @else {
-      <span class="icon">☀️</span>
-    }
-  </button>
-</div>
+<nz-switch [ngModel]="isDark()" (ngModelChange)="onToggle()" [nzCheckedChildren]="checkedTpl"
+  [nzUnCheckedChildren]="unCheckedTpl" class="switch-theme-button">
+</nz-switch>
+
+<ng-template #checkedTpl>
+  {{'core.components.buttonTheme.darkMode' | transloco}}
+</ng-template>
+
+<ng-template #unCheckedTpl>
+    {{'core.components.buttonTheme.darkMode' | transloco}}
+
+</ng-template>
