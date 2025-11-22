@@ -1,6 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 
-export type ThemeMode = 'default' | 'dark';
+export type ThemeMode = 'light' | 'dark';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +9,7 @@ export class ThemeService {
   private readonly THEME_STORAGE_KEY = 'app-theme';
   
   // tema atual
-  theme = signal<ThemeMode>('default');
+  theme = signal<ThemeMode>('light');
   
   // controla visibilidade do loader
   isLoadingTheme = signal<boolean>(false);
@@ -34,7 +34,7 @@ export class ThemeService {
   private getStoredTheme(): ThemeMode | null {
     try {
       const stored = localStorage.getItem(this.THEME_STORAGE_KEY);
-      if (stored === 'default' || stored === 'dark') {
+      if (stored === 'light' || stored === 'dark') {
         return stored as ThemeMode;
       }
     } catch (error) {
@@ -47,9 +47,9 @@ export class ThemeService {
   private getSystemTheme(): ThemeMode {
     if (typeof window !== 'undefined' && window.matchMedia) {
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      return prefersDark ? 'dark' : 'default';
+      return prefersDark ? 'dark' : 'light';
     }
-    return 'default';
+    return 'light';
   }
 
   /** Salva o tema no localStorage */
@@ -63,7 +63,7 @@ export class ThemeService {
 
   /** Alterna entre Light e Dark */
   toggleTheme() {
-    const newTheme: ThemeMode = this.theme() === 'default' ? 'dark' : 'default';
+    const newTheme: ThemeMode = this.theme() === 'light' ? 'dark' : 'light';
     this.theme.set(newTheme);
     this.applyTheme(newTheme, true); // com loader
     this.saveTheme(newTheme);
@@ -90,7 +90,7 @@ export class ThemeService {
       oldLinks.forEach(link => link.remove());
       
       // Atualiza classe no HTML
-      document.documentElement.classList.remove('default', 'dark');
+      document.documentElement.classList.remove('light', 'dark');
       document.documentElement.classList.add(theme);
       
       // Esconde o loader após uma pequena transição
@@ -120,7 +120,7 @@ export class ThemeService {
       mediaQuery.addEventListener('change', (e) => {
         // Só aplica se não houver tema salvo pelo usuário
         if (!this.getStoredTheme()) {
-          const newTheme: ThemeMode = e.matches ? 'dark' : 'default';
+          const newTheme: ThemeMode = e.matches ? 'dark' : 'light';
           this.theme.set(newTheme);
           this.applyTheme(newTheme, false);
         }
