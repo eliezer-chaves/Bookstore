@@ -1,12 +1,5 @@
-.absolute {
-  position: fixed;
-  top: 16px;
-  right: 16px;
-  z-index: 1000;
-}
-a {
-  text-decoration: none;
-  color: inherit;
+.absolute{
+  width: 100%;
 }
 
 

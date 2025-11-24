@@ -129,3 +129,36 @@ a[routerLink] {
   height: 0 !important;
   overflow: visible !important;
 }
+
+.header{
+  height: @header-height;
+  background-color: @bg;
+  font-weight: 700;
+  font-size: clamp(28px, 4vw, 35px);
+  color: @text-h1
+}
+
+.dashboard-content{
+  margin-top: @header-height;
+}
+body{
+  height: auto;
+}
+
+/* sobrescreve especificamente o titulo do submenu selecionado */
+.ant-dropdown-menu-submenu.ant-dropdown-menu-submenu-selected > .ant-dropdown-menu-submenu-title {
+  background-color: transparent !important;
+  color: inherit !important;
+}
+
+/* itens do menu normal selecionado */
+.ant-dropdown-menu-item.ant-dropdown-menu-item-selected,
+.ant-dropdown-menu-item.ant-dropdown-menu-item-selected:hover {
+  background-color: transparent !important;
+  color: inherit !important;
+}
+
+nz-avatar{
+  background-color: @avatar-card !important;
+  color: @header-avatar-icon !important;
+}

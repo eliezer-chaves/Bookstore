@@ -19,10 +19,13 @@ import { AuthService } from '../../../../core/services/auth.service';
 import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { ErrorTranslationService } from '../../../../core/services/error-translation.service';
+import { NzDividerComponent } from 'ng-zorro-antd/divider';
+import { ButtonLanguageComponent } from "../../../../core/components/button-language/button-language.component";
+import { ButtonThemeComponent } from "../../../../core/components/button-theme/button-theme.component";
 
 @Component({
   selector: 'app-login.page',
-  imports: [RouterLink, ReactiveFormsModule, FormsModule, NzFormModule, NzSelectModule, NzGridModule, NzDatePickerModule, NzRadioModule, NzInputModule, NzCheckboxModule, NzButtonModule, NzIconModule, NzInputNumberModule, NzTypographyModule, NzFlexModule, TranslocoModule],
+  imports: [RouterLink, ReactiveFormsModule, FormsModule, NzFormModule, NzSelectModule, NzGridModule, NzDatePickerModule, NzRadioModule, NzInputModule, NzCheckboxModule, NzButtonModule, NzIconModule, NzInputNumberModule, NzTypographyModule, NzFlexModule, TranslocoModule, NzDividerComponent, ButtonLanguageComponent, ButtonThemeComponent],
   templateUrl: './login.page.component.html',
   styleUrl: './login.page.component.css'
 })

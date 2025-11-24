@@ -70,16 +70,22 @@
             "logoutSuccess": "Logout realizado com sucesso."
         }
     },
-    "loader":{
+    "loader": {
         "loading": "Carregando tema..."
     },
-    "core":{
-        "components":{
-            "buttonTheme":{
+    "core": {
+        "components": {
+            "buttonTheme": {
                 "lightMode": "Modo Claro",
                 "darkMode": "Modo Escuro"
+            },
+            "header": {
+                "title": "Biblioteca",
+                "user": "Usuário",
+                "changeLanguage": "Mudar Idioma",
+                "changeTheme": "Mudar Tema",
+                "logoutMessage": "Saindo..."
             }
         }
     }
-    
 }

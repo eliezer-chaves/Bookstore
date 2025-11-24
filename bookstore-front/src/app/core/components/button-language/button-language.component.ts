@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzIconModule } from 'ng-zorro-antd/icon';
-import { environment, LanguageConfig } from '../../../environment/environment';
-import { TranslocoService } from '@jsverse/transloco';
-import { KeyValuePipe } from '@angular/common';
+import { LanguageConfig } from '../../../environment/environment';
+import { TranslateService } from '../../services/translate.service';
 
 @Component({
   selector: 'app-button-language',
@@ -12,27 +11,26 @@ import { KeyValuePipe } from '@angular/common';
   styleUrl: './button-language.component.css',
 })
 export class ButtonLanguageComponent implements OnInit {
-  environment = environment;
   defaultLang: string = 'en';
-  languages: LanguageConfig[] = environment.languages;
+  languages: LanguageConfig[] = [];
 
-  constructor(private translocoService: TranslocoService) {}
+  constructor(private translateService: TranslateService) {}
 
   ngOnInit() {
-    this.defaultLang = this.translocoService.getActiveLang();
+    this.defaultLang = this.translateService.getActiveLang();
+    this.languages = this.translateService.getAvailableLanguages();
   }
 
   changeLanguage(langCode: string) {
-    this.translocoService.setActiveLang(langCode);
+    this.translateService.changeLanguage(langCode);
     this.defaultLang = langCode;
   }
 
   getCountryCode(langCode: string): string {
-    const language = this.languages.find(lang => lang.code === langCode);
-    return language ? language.countryCode : langCode.toLowerCase();
+    return this.translateService.getCountryCode(langCode);
   }
 
   getCurrentLanguage(): LanguageConfig | undefined {
-    return this.languages.find(lang => lang.code === this.defaultLang);
+    return this.translateService.getCurrentLanguage();
   }
 }

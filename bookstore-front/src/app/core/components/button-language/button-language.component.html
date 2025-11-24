@@ -1,9 +1,9 @@
 <div class="absolute">
     <a nz-dropdown [nzDropdownMenu]="menu" nzPlacement="bottomRight">
         <span class="flag-icon flag-icon-{{ getCountryCode(defaultLang) }}"></span>
-       
+        <span style="font-size: 14px;">{{getCurrentLanguage()?.name}}</span>
     </a>
-   
+
     <nz-dropdown-menu #menu="nzDropdownMenu">
         <ul nz-menu nzSelectable>
             @for(lang of languages; track lang.code) {
@@ -15,6 +15,4 @@
             }
         </ul>
     </nz-dropdown-menu>
-
-    
 </div>

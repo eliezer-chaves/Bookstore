@@ -17,10 +17,13 @@ import { LoadingService } from '../../../../shared/services/loading.service';
 import { AuthService } from '../../../../core/services/auth.service';
 import { iUser, iUserRegister } from '../../../../core/interfaces/iUser.interface';
 import { TranslocoModule } from '@jsverse/transloco';
+import { NzDividerComponent } from 'ng-zorro-antd/divider';
+import { ButtonLanguageComponent } from '../../../../core/components/button-language/button-language.component';
+import { ButtonThemeComponent } from '../../../../core/components/button-theme/button-theme.component';
 
 @Component({
   selector: 'app-create-account.page',
-  imports: [RouterLink, ReactiveFormsModule, FormsModule, NzFormModule, NzInputModule, NzSelectModule, NzGridModule, NzDatePickerModule, NzRadioModule, NzCheckboxModule, NzButtonModule, NzIconModule, NzInputNumberModule, NzTypographyModule, NzFlexModule, TranslocoModule],
+  imports: [RouterLink, ReactiveFormsModule, FormsModule, NzFormModule, NzInputModule, NzSelectModule, NzGridModule, NzDatePickerModule, NzRadioModule, NzCheckboxModule, NzButtonModule, NzIconModule, NzInputNumberModule, NzTypographyModule, NzFlexModule, TranslocoModule, NzDividerComponent, ButtonLanguageComponent, ButtonThemeComponent],
   templateUrl: './create-account.page.component.html',
   styleUrl: './create-account.page.component.css'
 })
