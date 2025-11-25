@@ -1,0 +1,91 @@
+{
+    "domain": {
+        "auth": {
+            "pages": {
+                "login": {
+                    "loginTitle": "Bem-vindo de volta!",
+                    "loginSubtitle": "Por favor, introduza os seus dados para iniciar sessão.",
+                    "labelEmail": "E-mail",
+                    "labelPassword": "Palavra-passe",
+                    "placeholderEmail": "joao@email.com",
+                    "textCreateAccount": "Não tem uma conta?",
+                    "buttonLogin": "Iniciar Sessão",
+                    "linkCreateAccount": " Criar Conta",
+                    "errorEmailRequired": "Por favor, introduza um e-mail.",
+                    "errorEmailInvalid": "Por favor, introduza um e-mail válido.",
+                    "errorPasswordRequired": "Por favor, introduza uma palavra-passe.",
+                    "errorPasswordMinLength": "A palavra-passe deve ter pelo menos 8 caracteres."
+                },
+                "createAccount": {
+                    "title": "Crie a sua conta",
+                    "labelFirstName": "Primeiro Nome",
+                    "placeholderFirstName": "João",
+                    "labelLastName": "Último Nome",
+                    "placeholderLastName": "Silva",
+                    "labelPhone": "Telefone",
+                    "labelEmail": "E-mail",
+                    "placeholderEmail": "joao@email.com",
+                    "labelPassword": "Palavra-passe",
+                    "labelConfirmPassword": "Confirmar Palavra-passe",
+                    "buttonCreateAccount": "Criar Conta",
+                    "textCreateAccount": "Já tem uma conta?",
+                    "linkLogin": " Iniciar Sessão",
+                    "errorFirstName": "Por favor, introduza o seu primeiro nome.",
+                    "errorLastName": "Por favor, introduza o seu último nome.",
+                    "errorPhone": "Por favor, introduza um número de telefone.",
+                    "errorPhoneInvalid": "Por favor, introduza um número de telefone válido.",
+                    "errorEmail": "Por favor, introduza um e-mail.",
+                    "errorEmailInvalid": "Por favor, introduza um e-mail válido.",
+                    "errorPassword": "Por favor, introduza uma palavra-passe.",
+                    "errorPasswordMinLength": "A palavra-passe deve ter pelo menos 6 caracteres.",
+                    "errorConfirmPasswordRequired": "Por favor, confirme a sua palavra-passe.",
+                    "errorConfirmPassword": "As palavras-passe não coincidem."
+                }
+            }
+        },
+        "dashboard": {
+            "pages": {
+                "dashboard": {
+                    "titleWelcome": "Bem-vindo, ",
+                    "buttonLogout": "Terminar Sessão"
+                }
+            }
+        }
+    },
+    "errors": {
+        "notifications": {
+            "loginErrorTitle": "Erro no Início de Sessão",
+            "genericError": "Ocorreu um erro inesperado. Por favor, tente novamente.",
+            "unauthenticated": "Sessão expirada. Por favor, inicie sessão novamente.",
+            "serverError": "Erro interno do servidor. Por favor, tente mais tarde.",
+            "invalidCredentials": "E-mail ou palavra-passe incorretos.",
+            "userNotFound": "Utilizador não encontrado.",
+            "accountLocked": "Conta bloqueada. Por favor, contacte o suporte.",
+            "emailNotVerified": "E-mail não verificado. Por favor, verifique a sua caixa de entrada.",
+            "validationError": "Dados inválidos. Por favor, verifique a informação fornecida.",
+            "updateError": "Erro ao atualizar dados. Por favor, tente novamente.",
+            "invalidPassword": "A palavra-passe atual está incorreta.",
+            "registerSuccess": "Conta criada com sucesso!",
+            "registerError": "Erro ao criar conta. Por favor, tente novamente.",
+            "logoutSuccess": "Sessão terminada com sucesso."
+        }
+    },
+    "loader": {
+        "loading": "A carregar o tema..."
+    },
+    "core": {
+        "components": {
+            "buttonTheme": {
+                "lightMode": "Modo Claro",
+                "darkMode": "Modo Escuro"
+            },
+            "header": {
+                "title": "Biblioteca",
+                "user": "Utilizador",
+                "changeLanguage": "Alterar Idioma",
+                "changeTheme": "Alterar Tema",
+                "logoutMessage": "A terminar sessão..."
+            }
+        }
+    }
+}

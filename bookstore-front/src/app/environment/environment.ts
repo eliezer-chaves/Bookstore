@@ -14,11 +14,10 @@ export const environment = {
     { code: 'de', name: 'Deutsch', countryCode: 'de' },
     { code: 'es', name: 'Español', countryCode: 'es' },
     { code: 'fr', name: 'Français', countryCode: 'fr' },
+    { code: 'it', name: 'Italiano', countryCode: 'it' },
+    { code: 'ja', name: '日本語', countryCode: 'jp' },
     { code: 'pt-BR', name: 'Português (BR)', countryCode: 'br' },
-
-    // Adicione novos idiomas aqui automaticamente
-    //{ code: 'it', name: 'Italiano', countryCode: 'it' },
-    //{ code: 'ja', name: '日本語', countryCode: 'jp' }
+    { code: 'pt-PT', name: 'Português (PT)', countryCode: 'pt' },
   ] as LanguageConfig[],
 
   // Helper para obter o mapa de idiomas (mantém compatibilidade)
