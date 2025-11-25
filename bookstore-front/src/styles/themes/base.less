@@ -1,12 +1,16 @@
 @import "./reset.less";
 @import "./utilites.less";
 
+/* ===========================
+   BASE / TYPOGRAPHY
+=========================== */
 body {
   line-height: 1.2;
   font-family: "Inter", sans-serif;
   font-size: clamp(16px, 1.2vw, 18px);
   background-color: @bg;
   color: @text-gray;
+  height: auto;
 }
 
 h1 {
@@ -22,9 +26,51 @@ h2 {
 }
 
 /* ===========================
-   FORM / INPUTS
+   HEADER
+=========================== */
+.header {
+  height: @header-height;
+  background-color: @header-bg;
+  font-weight: 700;
+  font-size: clamp(28px, 4vw, 35px);
+  color: @text-h1;
+  box-shadow: 0 2px 8px fade(@shadow-color, 12%);
+  will-change: box-shadow;
+  transition: box-shadow 0.3s ease;
+}
+
+.dashboard-content {
+  margin-top: @header-height;
+}
+
+/* ===========================
+   FORM ELEMENTS
 =========================== */
 
+/* Labels */
+::ng-deep .ant-form-item-label > label,
+::ng-deep nz-form-label label {
+  margin: 0 !important;
+  padding: 0 !important;
+  color: @label-color !important;
+  font-size: 14px !important;
+}
+
+.ant-form-vertical .ant-form-item-label,
+.ant-col-24.ant-form-item-label,
+.ant-col-xl-24.ant-form-item-label {
+  padding: 0 !important;
+}
+
+.ant-form-item {
+  margin: 0;
+}
+
+.ant-form-item .ant-form-item-control {
+  position: relative;
+}
+
+/* Inputs */
 input {
   border-radius: 81px;
   height: 44px;
@@ -48,56 +94,7 @@ input {
   }
 }
 
-/* Labels */
-::ng-deep .ant-form-item-label > label,
-::ng-deep nz-form-label label {
-  margin: 0 !important;
-  padding: 0 !important;
-  color: @label-color !important;
-  font-size: 14px !important;
-}
-
-.ant-form-vertical .ant-form-item-label,
-.ant-col-24.ant-form-item-label,
-.ant-col-xl-24.ant-form-item-label {
-  padding: 0 !important; // remove
-}
-
-.ant-form-item {
-  margin: 0;
-}
-
-/* Botões */
-.ant-btn-primary {
-  height: 44px;
-  font-size: 16px;
-  border-radius: 8px;
-  padding: 10px;
-  color: @btn-primary-text;
-  background: @btn-primary-bg;
-}
-
-/* Cards */
-.auth-card {
-  min-width: 340px;
-  max-width: 400px;
-  background-color: @card-bg;
-  border-radius: 8px;
-  padding: @padding-3 @padding-2;
-  border: solid 1px @card-border;
-}
-
-//links
-a.link-primary,
-a[routerLink] {
-  color: @link-color !important;
-}
-/* Base para posicionar a mensagem */
-.ant-form-item .ant-form-item-control {
-  position: relative;
-}
-
-/* Mensagem de erro absoluta */
+/* Form Validation & Error Messages */
 .ant-form-item .ant-form-item-explain,
 .ant-form-item .ant-form-item-explain-error {
   position: absolute;
@@ -107,22 +104,18 @@ a[routerLink] {
   font-size: 12px;
   line-height: 1.4;
   color: #ff4d4f;
-
   pointer-events: none;
-
   opacity: 0;
   transform: translateY(-4px);
   transition: all 0.2s ease-out;
 }
 
-/* Quando o input está com erro */
 .ant-form-item-has-error .ant-form-item-explain,
 .ant-form-item-has-error .ant-form-item-explain-error {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* REMOVE o espaço que o NG-Zorro cria */
 .ant-form-item-with-help .ant-form-item-explain,
 .ant-form-item-with-help .ant-form-item-explain-error {
   min-height: 0 !important;
@@ -130,35 +123,80 @@ a[routerLink] {
   overflow: visible !important;
 }
 
-.header{
-  height: @header-height;
-  background-color: @bg;
-  font-weight: 700;
-  font-size: clamp(28px, 4vw, 35px);
-  color: @text-h1
+/* ===========================
+   BUTTONS
+=========================== */
+.ant-btn-primary {
+  height: 44px;
+  font-size: 16px;
+  border-radius: 8px;
+  padding: 10px;
+  color: @btn-primary-text;
+  background: @btn-primary-bg;
 }
 
-.dashboard-content{
-  margin-top: @header-height;
-}
-body{
-  height: auto;
+/* ===========================
+   CARDS & CONTAINERS
+=========================== */
+.auth-card {
+  min-width: 340px;
+  max-width: 400px;
+  background-color: @card-bg;
+  border-radius: 8px;
+  padding: @padding-3 @padding-2;
+  border: solid 1px @card-border;
 }
 
-/* sobrescreve especificamente o titulo do submenu selecionado */
+/* ===========================
+   LINKS
+=========================== */
+a.link-primary,
+a[routerLink] {
+  color: @link-color !important;
+}
+
+/* ===========================
+   DROPDOWNS & MENUS
+=========================== */
+.ant-dropdown-menu {
+  background-color: @card-bg !important;
+  color: @text-h1 !important;
+}
+
+.ant-dropdown-menu-item,
+.ant-dropdown-menu-submenu-title {
+  background-color: @card-bg !important;
+}
+
+.ant-dropdown-menu-item:hover,
+.ant-dropdown-menu-submenu-title:hover {
+  background-color: @bg !important;
+  color: @text-h1 !important;
+}
+
+.ant-dropdown-menu-item.ant-dropdown-menu-item-selected,
+.ant-dropdown-menu-item.ant-dropdown-menu-item-selected:hover {
+  background-color: transparent !important;
+}
+
 .ant-dropdown-menu-submenu.ant-dropdown-menu-submenu-selected > .ant-dropdown-menu-submenu-title {
   background-color: transparent !important;
   color: inherit !important;
 }
 
-/* itens do menu normal selecionado */
-.ant-dropdown-menu-item.ant-dropdown-menu-item-selected,
-.ant-dropdown-menu-item.ant-dropdown-menu-item-selected:hover {
-  background-color: transparent !important;
-  color: inherit !important;
+.ant-dropdown-menu-item.ant-dropdown-menu-item-danger {
+  color: #ff4d4f !important;
 }
 
-nz-avatar{
+nz-menu-item {
+  background-color: @bg !important;
+  color: @text-h1;
+}
+
+/* ===========================
+   AVATARS
+=========================== */
+nz-avatar {
   background-color: @avatar-card !important;
   color: @header-avatar-icon !important;
 }
