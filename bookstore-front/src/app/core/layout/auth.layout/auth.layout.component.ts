@@ -5,7 +5,7 @@ import { ButtonThemeComponent } from "../../components/button-theme/button-theme
 
 @Component({
   selector: 'app-auth.layout',
-  imports: [RouterModule, ButtonLanguageComponent, ButtonThemeComponent],
+  imports: [RouterModule],
   templateUrl: './auth.layout.component.html',
   styleUrl: './auth.layout.component.css'
 })
