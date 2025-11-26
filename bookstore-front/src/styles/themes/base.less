@@ -108,7 +108,7 @@ a[routerLink] {
   width: 100%;
   font-size: 12px;
   line-height: 1.4;
-  color: #ff4d4f;
+  color: @primary-red;
   pointer-events: none;
   opacity: 0;
   transform: translateY(-4px);
@@ -182,17 +182,19 @@ nz-menu-item {
   color: @text-h1;
 }
 .ant-dropdown-menu-item.ant-dropdown-menu-item-danger {
-  color: #ff4d4f !important;
+  color: @primary-red !important;
 }
 
 nz-avatar {
   background-color: @avatar-card !important;
   color: @header-avatar-icon !important;
 }
+
 /* ===========================
    INTERNATIONAL TELEPHONE INPUT
 =========================== */
 intl-tel-input {
+  
   width: 100%;
 
   .iti {
@@ -201,8 +203,8 @@ intl-tel-input {
     // Container principal
     .iti__country-container {
       width: 100%;
-      color: red;
     }
+  
 
     // Botão do país selecionado
     .iti__selected-country {
@@ -223,13 +225,29 @@ intl-tel-input {
       display: flex;
       align-items: center;
       gap: 6px;
+      padding-right: 8px;
     }
 
+    // Remove a seta padrão do componente e usa apenas a customizada
     .iti__arrow {
+      width: 0;
+      height: 0;
+      border: none;
       border-top: 4px solid @input-suffix-color;
       border-left: 4px solid transparent;
       border-right: 4px solid transparent;
       margin-left: auto;
+
+      // Remove possíveis setas duplicadas
+      &::before,
+      &::after {
+        display: none;
+      }
+    }
+
+    // Garante que não há outras setas sendo renderizadas
+    .iti__selected-country::after {
+      display: none !important;
     }
 
     // Dropdown
@@ -249,7 +267,6 @@ intl-tel-input {
       border-radius: 4px;
       color: @text-gray;
       padding: 12px 40px;
-
       width: 100%;
       font-size: 14px;
 
@@ -267,28 +284,46 @@ intl-tel-input {
 
     .iti__search-icon {
       margin-left: 10px;
-      color: @input-suffix-color;
+      color: @color-input;
 
       svg {
         circle,
         line {
-          stroke: @input-suffix-color;
+          stroke: @color-input;
         }
       }
     }
 
     // Botão de limpar busca
+    // Botão de limpar busca
     .iti__search-clear {
       background: none;
       border: none;
+      cursor: pointer;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.8;
+      transition: opacity 0.2s ease;
+
+      &:hover {
+        opacity: 1;
+      }
 
       svg {
-        .iti__search-clear-bg {
-          fill: @input-suffix-color;
-        }
-        .iti__search-clear-x {
-          stroke: @card-bg;
-        }
+        width: 16px;
+        height: 16px;
+      }
+
+      .iti__search-clear-bg {
+        fill: @input-suffix-color !important;
+      }
+
+      .iti__search-clear-x {
+        stroke: black !important;
+        stroke-width: 2;
+        stroke-linecap: round;
       }
     }
 
@@ -348,12 +383,12 @@ intl-tel-input {
       width: 100%;
       height: 44px;
       background: @card-bg;
-      border:1px solid @border-input;
+      border: 1px solid @border-input;
       border-radius: 4px;
       color: @color-input;
 
       padding: 10px 12px;
-      padding-left: 47px !important;
+      padding-left: 55px !important;
       font-size: 14px;
       transition: all 0.3s ease;
 
@@ -376,7 +411,7 @@ intl-tel-input {
     &.iti--invalid {
       .iti__selected-country,
       .iti__tel-input {
-        border-color: #ff4d4f;
+        border-color: @primary-red;
       }
     }
 
@@ -385,6 +420,14 @@ intl-tel-input {
       .iti__selected-country {
         border-color: @primary-blue;
         box-shadow: 0 0 0 2px fade(@primary-blue, 20%);
+      }
+
+      // Inverte a seta quando o dropdown está aberto
+      .iti__arrow {
+        border-top: none;
+        border-bottom: 4px solid @input-suffix-color;
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
       }
     }
   }
@@ -402,11 +445,11 @@ intl-tel-input {
   intl-tel-input {
     .iti__selected-country,
     .iti__tel-input {
-      border-color: #ff4d4f;
+      border-color: @primary-red;
     }
 
     .iti__tel-input:focus {
-      box-shadow: 0 0 0 2px fade(#ff4d4f, 20%);
+      box-shadow: 0 0 0 2px fade(@primary-red, 20%);
     }
   }
 }
@@ -422,4 +465,17 @@ intl-tel-input {
       cursor: not-allowed;
     }
   }
+}
+.iti__mobile {
+  position: absolute !important;
+  top: auto !important;
+  bottom: auto !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  background: none !important;
+  box-shadow: none !important;
+  transform: none !important;
+  padding: 0 !important;
 }
