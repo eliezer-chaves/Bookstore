@@ -1,22 +1,28 @@
-<div class="auth-card" >
+<div class="auth-card">
     <h1 class="text-center">{{'domain.auth.pages.createAccount.title' | transloco}}</h1>
     <form nz-form [nzLayout]="'vertical'" [formGroup]="validateForm" (ngSubmit)="submitForm()" class="mt-2">
         <div class="d-flex-center" style="gap: 8px;">
             <nz-form-item>
-                <nz-form-label class="custom-label">{{'domain.auth.pages.createAccount.labelFirstName' | transloco}}</nz-form-label>
+                <nz-form-label class="custom-label">{{'domain.auth.pages.createAccount.labelFirstName' |
+                    transloco}}</nz-form-label>
                 <nz-form-control [nzErrorTip]="firstNameErrorTpl">
-                    <input nz-input formControlName="usr_first_name" placeholder="{{'domain.auth.pages.createAccount.placeholderFirstName' | transloco}}" />
+                    <input nz-input formControlName="usr_first_name"
+                        placeholder="{{'domain.auth.pages.createAccount.placeholderFirstName' | transloco}}" />
                     <ng-template #firstNameErrorTpl let-control>
-                        {{ control.errors?.['required'] ? ('domain.auth.pages.createAccount.errorFirstName' | transloco) : '' }}
+                        {{ control.errors?.['required'] ? ('domain.auth.pages.createAccount.errorFirstName' | transloco)
+                        : '' }}
                     </ng-template>
                 </nz-form-control>
             </nz-form-item>
             <nz-form-item>
-                <nz-form-label class="custom-label">{{'domain.auth.pages.createAccount.labelLastName' | transloco}}</nz-form-label>
+                <nz-form-label class="custom-label">{{'domain.auth.pages.createAccount.labelLastName' |
+                    transloco}}</nz-form-label>
                 <nz-form-control [nzErrorTip]="lastNameErrorTpl">
-                    <input nz-input formControlName="usr_last_name" placeholder="{{'domain.auth.pages.createAccount.placeholderLastName' | transloco}}"/>
+                    <input nz-input formControlName="usr_last_name"
+                        placeholder="{{'domain.auth.pages.createAccount.placeholderLastName' | transloco}}" />
                     <ng-template #lastNameErrorTpl let-control>
-                        {{ control.errors?.['required'] ? ('domain.auth.pages.createAccount.errorLastName' | transloco) : '' }}
+                        {{ control.errors?.['required'] ? ('domain.auth.pages.createAccount.errorLastName' | transloco)
+                        : '' }}
                     </ng-template>
                 </nz-form-control>
             </nz-form-item>
@@ -25,20 +31,28 @@
         <nz-form-item class="mt-3">
             <nz-form-label>{{'domain.auth.pages.createAccount.labelPhone' | transloco}}</nz-form-label>
             <nz-form-control [nzErrorTip]="phoneErrorTpl">
-                <input nz-input formControlName="usr_phone" placeholder="(00) 0 0000-0000" />
+                <intl-tel-input #telInput (numberChange)="handleNumberChange($event)"
+                    (validityChange)="handleValidityChange($event)" [initOptions]="{
+    initialCountry: 'us',
+  }" />
                 <ng-template #phoneErrorTpl let-control>
                     {{ control.errors?.['required'] ? ('domain.auth.pages.createAccount.errorPhone' | transloco) : '' }}
-                    {{ control.errors?.['pattern'] ? ('domain.auth.pages.createAccount.errorPhoneInvalid' | transloco) : '' }}
+                    {{ control.errors?.['pattern'] ? ('domain.auth.pages.createAccount.errorPhoneInvalid' | transloco) :
+                    '' }}
                 </ng-template>
             </nz-form-control>
         </nz-form-item>
         <nz-form-item class="mt-3">
             <nz-form-label>{{'domain.auth.pages.createAccount.labelEmail' | transloco}}</nz-form-label>
             <nz-form-control [nzErrorTip]="emailErrorTpl">
-                <input nz-input formControlName="usr_email" placeholder="{{'domain.auth.pages.createAccount.placeholderEmail' | transloco}}" />
+                <input nz-input formControlName="usr_email"
+                    placeholder="{{'domain.auth.pages.createAccount.placeholderEmail' | transloco}}" />
+
+
                 <ng-template #emailErrorTpl let-control>
                     {{ control.errors?.['required'] ? ('domain.auth.pages.createAccount.errorEmail' | transloco) : '' }}
-                    {{ control.errors?.['email'] ? ('domain.auth.pages.createAccount.errorEmailInvalid' | transloco) : '' }}
+                    {{ control.errors?.['email'] ? ('domain.auth.pages.createAccount.errorEmailInvalid' | transloco) :
+                    '' }}
                 </ng-template>
             </nz-form-control>
         </nz-form-item>
@@ -49,8 +63,10 @@
                     <input nz-input placeholder="••••••••" formControlName="usr_password" />
                 </nz-input-password>
                 <ng-template #passwordErrorTpl let-control>
-                    {{ control.errors?.['required'] ? ('domain.auth.pages.createAccount.errorPassword' | transloco) : '' }}
-                    {{ control.errors?.['minlength'] ? ('domain.auth.pages.createAccount.errorPasswordMinLength' | transloco) : '' }}
+                    {{ control.errors?.['required'] ? ('domain.auth.pages.createAccount.errorPassword' | transloco) : ''
+                    }}
+                    {{ control.errors?.['minlength'] ? ('domain.auth.pages.createAccount.errorPasswordMinLength' |
+                    transloco) : '' }}
                 </ng-template>
             </nz-form-control>
         </nz-form-item>
@@ -61,8 +77,10 @@
                     <input nz-input placeholder="••••••••" formControlName="usr_password_confirmation" />
                 </nz-input-password>
                 <ng-template #confirmPasswordErrorTpl let-control>
-                    {{ control.errors?.['required'] ? ('domain.auth.pages.createAccount.errorConfirmPasswordRequired' | transloco) : '' }}
-                    {{ control.errors?.['passwordMismatch'] ? ('domain.auth.pages.createAccount.errorConfirmPassword' | transloco) : '' }}
+                    {{ control.errors?.['required'] ? ('domain.auth.pages.createAccount.errorConfirmPasswordRequired' |
+                    transloco) : '' }}
+                    {{ control.errors?.['passwordMismatch'] ? ('domain.auth.pages.createAccount.errorConfirmPassword' |
+                    transloco) : '' }}
                 </ng-template>
             </nz-form-control>
         </nz-form-item>
@@ -75,8 +93,8 @@
             </nz-form-control>
         </nz-form-item>
         <div class="text-center mt-1">
-            <span >{{'domain.auth.pages.createAccount.textCreateAccount' | transloco}}</span>
-            <a routerLink="/auth/login" >{{'domain.auth.pages.createAccount.linkLogin' | transloco}}</a>
+            <span>{{'domain.auth.pages.createAccount.textCreateAccount' | transloco}}</span>
+            <a routerLink="/auth/login">{{'domain.auth.pages.createAccount.linkLogin' | transloco}}</a>
         </div>
     </form>
     <nz-divider></nz-divider>

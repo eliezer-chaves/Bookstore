@@ -20,10 +20,12 @@ import { TranslocoModule } from '@jsverse/transloco';
 import { NzDividerComponent } from 'ng-zorro-antd/divider';
 import { ButtonLanguageComponent } from '../../../../core/components/button-language/button-language.component';
 import { ButtonThemeComponent } from '../../../../core/components/button-theme/button-theme.component';
+import { IntlTelInputComponent } from "intl-tel-input/angularWithUtils";
+
 
 @Component({
   selector: 'app-create-account.page',
-  imports: [RouterLink, ReactiveFormsModule, FormsModule, NzFormModule, NzInputModule, NzSelectModule, NzGridModule, NzDatePickerModule, NzRadioModule, NzCheckboxModule, NzButtonModule, NzIconModule, NzInputNumberModule, NzTypographyModule, NzFlexModule, TranslocoModule, NzDividerComponent, ButtonLanguageComponent, ButtonThemeComponent],
+  imports: [RouterLink, ReactiveFormsModule, FormsModule, NzFormModule, NzInputModule, NzSelectModule, NzGridModule, NzDatePickerModule, NzRadioModule, NzCheckboxModule, NzButtonModule, NzIconModule, NzInputNumberModule, NzTypographyModule, NzFlexModule, TranslocoModule, NzDividerComponent, ButtonLanguageComponent, ButtonThemeComponent, IntlTelInputComponent ],
   templateUrl: './create-account.page.component.html',
   styleUrl: './create-account.page.component.css'
 })
@@ -64,5 +66,15 @@ export class CreateAccountPageComponent {
     } else {
       // resto do código...
     }
+  }
+
+   phoneNumber: string = '';
+  
+  handleNumberChange(event: any) {
+    console.log('Número alterado:', event);
+  }
+  
+  handleValidityChange(event: any) {
+    console.log('Validade alterada:', event);
   }
 }
