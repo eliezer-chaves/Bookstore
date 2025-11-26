@@ -34,6 +34,7 @@ input {
 .ant-input {
   border-radius: 4px;
   padding: 10px !important;
+  color: @color-input;
 }
 
 .ant-input-affix-wrapper {
@@ -107,7 +108,7 @@ a[routerLink] {
   width: 100%;
   font-size: 12px;
   line-height: 1.4;
-  color: @primary-red;
+  color: #ff4d4f;
   pointer-events: none;
   opacity: 0;
   transform: translateY(-4px);
@@ -181,18 +182,16 @@ nz-menu-item {
   color: @text-h1;
 }
 .ant-dropdown-menu-item.ant-dropdown-menu-item-danger {
-  color: @primary-red !important;
+  color: #ff4d4f !important;
 }
 
 nz-avatar {
   background-color: @avatar-card !important;
   color: @header-avatar-icon !important;
 }
-
 /* ===========================
    INTERNATIONAL TELEPHONE INPUT
 =========================== */
-
 intl-tel-input {
   width: 100%;
 
@@ -202,6 +201,7 @@ intl-tel-input {
     // Container principal
     .iti__country-container {
       width: 100%;
+      color: red;
     }
 
     // Botão do país selecionado
@@ -215,7 +215,6 @@ intl-tel-input {
 
       &:focus {
         border-color: @primary-blue;
-        box-shadow: 0 0 0 2px fade(@primary-blue, 20%);
       }
     }
 
@@ -224,11 +223,6 @@ intl-tel-input {
       display: flex;
       align-items: center;
       gap: 6px;
-    }
-
-    .iti__flag {
-      width: 25px;
-      height: 25px;
     }
 
     .iti__arrow {
@@ -245,7 +239,7 @@ intl-tel-input {
       border-radius: 4px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       margin-top: 4px;
-      color: @text-gray;
+      color: @text-gray !important;
     }
 
     // Campo de busca
@@ -354,27 +348,27 @@ intl-tel-input {
       width: 100%;
       height: 44px;
       background: @card-bg;
-      border: 1px solid @border;
+      border:1px solid @border-input;
       border-radius: 4px;
-      color: @text-gray;
+      color: @color-input;
+
       padding: 10px 12px;
       padding-left: 47px !important;
       font-size: 14px;
       transition: all 0.3s ease;
 
       &:hover {
-        border-color: darken(@border, 10%);
+        border-color: @hover-input;
       }
 
       &:focus {
-        border-color: @primary-blue;
+        border-color: @border-input-focus;
         box-shadow: 0 0 0 2px fade(@primary-blue, 20%);
         outline: none;
       }
 
       &::placeholder {
-        color: lighten(@text-gray, 20%);
-        opacity: 1;
+        color: @placeholder-input;
       }
     }
 
@@ -382,7 +376,7 @@ intl-tel-input {
     &.iti--invalid {
       .iti__selected-country,
       .iti__tel-input {
-        border-color: @primary-red;
+        border-color: #ff4d4f;
       }
     }
 
@@ -408,11 +402,11 @@ intl-tel-input {
   intl-tel-input {
     .iti__selected-country,
     .iti__tel-input {
-      border-color: @primary-red;
+      border-color: #ff4d4f;
     }
 
     .iti__tel-input:focus {
-      box-shadow: 0 0 0 2px fade(@primary-red, 20%);
+      box-shadow: 0 0 0 2px fade(#ff4d4f, 20%);
     }
   }
 }
@@ -426,20 +420,6 @@ intl-tel-input {
       border-color: fade(@border, 50%);
       color: fade(@text-gray, 50%);
       cursor: not-allowed;
-    }
-  }
-}
-
-/* Ajuste para responsividade */
-@media (max-width: 768px) {
-  intl-tel-input {
-    .iti__dropdown-content {
-      width: 100% !important;
-      max-width: 100%;
-    }
-
-    .iti__country-list {
-      max-height: 150px;
     }
   }
 }
