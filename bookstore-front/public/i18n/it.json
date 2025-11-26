@@ -11,9 +11,9 @@
                     "textCreateAccount": "Non hai un account?",
                     "buttonLogin": "Accedi",
                     "linkCreateAccount": " Crea Account",
-                    "errorEmailRequired": "Inserisci un'email.",
-                    "errorEmailInvalid": "Inserisci un'email valida.",
-                    "errorPasswordRequired": "Inserisci una password.",
+                    "errorEmailRequired": "Per favore, inserisci un'email.",
+                    "errorEmailInvalid": "Per favore, inserisci un'email valida.",
+                    "errorPasswordRequired": "Per favore, inserisci una password.",
                     "errorPasswordMinLength": "La password deve essere di almeno 8 caratteri."
                 },
                 "createAccount": {
@@ -22,7 +22,7 @@
                     "placeholderFirstName": "Giovanni",
                     "labelLastName": "Cognome",
                     "placeholderLastName": "Rossi",
-                    "labelPhone": "Telefono",
+                    "labelPhone": "Cellulare",
                     "labelEmail": "Email",
                     "placeholderEmail": "giovanni@email.com",
                     "labelPassword": "Password",
@@ -30,23 +30,32 @@
                     "buttonCreateAccount": "Crea Account",
                     "textCreateAccount": "Hai già un account?",
                     "linkLogin": " Accedi",
-                    "errorFirstName": "Inserisci il tuo nome.",
-                    "errorLastName": "Inserisci il tuo cognome.",
-                    "errorPhone": "Inserisci un numero di telefono.",
-                    "errorPhoneInvalid": "Inserisci un numero di telefono valido.",
-                    "errorEmail": "Inserisci un'email.",
-                    "errorEmailInvalid": "Inserisci un'email valida.",
-                    "errorPassword": "Inserisci una password.",
+                    "errorFirstName": "Per favore, inserisci il tuo nome.",
+                    "errorLastName": "Per favore, inserisci il tuo cognome.",
+                    "errorPhone": "Per favore, inserisci un numero di cellulare.",
+                    "errorPhoneInvalid": "Per favore, inserisci un numero di cellulare valido.",
+                    "errorEmail": "Per favore, inserisci un'email.",
+                    "errorEmailInvalid": "Per favore, inserisci un'email valida.",
+                    "errorPassword": "Per favore, inserisci una password.",
                     "errorPasswordMinLength": "La password deve essere di almeno 6 caratteri.",
-                    "errorConfirmPasswordRequired": "Conferma la tua password.",
+                    "errorConfirmPasswordRequired": "Per favore, conferma la tua password.",
                     "errorConfirmPassword": "Le password non corrispondono."
+                }
+            },
+            "components": {
+                "phoneInput": {
+                    "searchPlaceholder": "Cerca...",
+                    "zeroSearchResults": "Nessun risultato trovato",
+                    "clearSearchAriaLabel": "Cancella ricerca",
+                    "countryListAriaLabel": "Lista paesi",
+                    "selectedCountryAriaLabel": "Paese selezionato"
                 }
             }
         },
         "dashboard": {
             "pages": {
                 "dashboard": {
-                    "titleWelcome": "Benvenuto, ",
+                    "titleWelcome": "Benvenuto/a, ",
                     "buttonLogout": "Esci"
                 }
             }
@@ -56,15 +65,15 @@
         "notifications": {
             "loginErrorTitle": "Errore di Accesso",
             "genericError": "Si è verificato un errore imprevisto. Riprova.",
-            "unauthenticated": "Sessione scaduta. Accedi di nuovo.",
-            "serverError": "Errore interno del server. Riprova più tardi.",
-            "invalidCredentials": "Email o password incorretti.",
+            "unauthenticated": "Sessione scaduta. Accedi nuovamente.",
+            "serverError": "Errore interno del servidor. Riprova più tardi.",
+            "invalidCredentials": "Email o password errati.",
             "userNotFound": "Utente non trovato.",
             "accountLocked": "Account bloccato. Contatta l'assistenza.",
             "emailNotVerified": "Email non verificata. Controlla la tua casella di posta.",
-            "validationError": "Dati non validi. Controlla le informazioni fornite.",
+            "validationError": "Dati non validi. Verifica le informazioni fornite.",
             "updateError": "Errore durante l'aggiornamento dei dati. Riprova.",
-            "invalidPassword": "La password corrente è incorretta.",
+            "invalidPassword": "Password attuale errata.",
             "registerSuccess": "Account creato con successo!",
             "registerError": "Errore durante la creazione dell'account. Riprova.",
             "logoutSuccess": "Logout effettuato con successo."

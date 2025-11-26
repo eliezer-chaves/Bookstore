@@ -11,12 +11,13 @@ export const environment = {
   // Configuração dinâmica dos idiomas
   languages: [
     { code: 'en', name: 'English', countryCode: 'gb' },
+    { code: 'pt-BR', name: 'Português (BR)', countryCode: 'br' },
+
     { code: 'de', name: 'Deutsch', countryCode: 'de' },
     { code: 'es', name: 'Español', countryCode: 'es' },
     { code: 'fr', name: 'Français', countryCode: 'fr' },
     { code: 'it', name: 'Italiano', countryCode: 'it' },
     { code: 'ja', name: '日本語', countryCode: 'jp' },
-    { code: 'pt-BR', name: 'Português (BR)', countryCode: 'br' },
     { code: 'pt-PT', name: 'Português (PT)', countryCode: 'pt' },
   ] as LanguageConfig[],
 

@@ -41,6 +41,15 @@
                     "errorConfirmPasswordRequired": "Por favor, confirme sua senha.",
                     "errorConfirmPassword": "As senhas não coincidem."
                 }
+            },
+            "components": {
+                "phoneInput": {
+                    "searchPlaceholder": "Buscar...",
+                    "zeroSearchResults": "Nenhum resultado encontrado",
+                    "clearSearchAriaLabel": "Limpar busca",
+                    "countryListAriaLabel": "Lista de países",
+                    "selectedCountryAriaLabel": "País selecionado"
+                }
             }
         },
         "dashboard": {

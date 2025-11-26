@@ -189,24 +189,19 @@ nz-avatar {
   background-color: @avatar-card !important;
   color: @header-avatar-icon !important;
 }
-
 /* ===========================
    INTERNATIONAL TELEPHONE INPUT
 =========================== */
 intl-tel-input {
-  
   width: 100%;
 
   .iti {
     width: 100%;
 
-    // Container principal
     .iti__country-container {
       width: 100%;
     }
-  
 
-    // Botão do país selecionado
     .iti__selected-country {
       background: transparent;
       height: 44px;
@@ -220,7 +215,6 @@ intl-tel-input {
       }
     }
 
-    // Bandeira e seta
     .iti__selected-country-primary {
       display: flex;
       align-items: center;
@@ -228,7 +222,6 @@ intl-tel-input {
       padding-right: 8px;
     }
 
-    // Remove a seta padrão do componente e usa apenas a customizada
     .iti__arrow {
       width: 0;
       height: 0;
@@ -238,19 +231,17 @@ intl-tel-input {
       border-right: 4px solid transparent;
       margin-left: auto;
 
-      // Remove possíveis setas duplicadas
       &::before,
       &::after {
         display: none;
       }
     }
 
-    // Garante que não há outras setas sendo renderizadas
     .iti__selected-country::after {
       display: none !important;
     }
 
-    // Dropdown
+    // FORÇA O DROPDOWN A APARECER SEMPRE ABAIXO DO INPUT
     .iti__dropdown-content {
       background: @card-bg;
       border: 1px solid @border;
@@ -258,9 +249,15 @@ intl-tel-input {
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       margin-top: 4px;
       color: @text-gray !important;
+      position: absolute !important;
+      top: 100% !important;
+      left: 0 !important;
+      right: 0 !important;
+      width: 100% !important;
+      max-height: 300px !important;
+      z-index: 1000;
     }
 
-    // Campo de busca
     .iti__search-input {
       background: @card-bg;
       border: 1px solid @border;
@@ -294,8 +291,6 @@ intl-tel-input {
       }
     }
 
-    // Botão de limpar busca
-    // Botão de limpar busca
     .iti__search-clear {
       background: none;
       border: none;
@@ -327,13 +322,11 @@ intl-tel-input {
       }
     }
 
-    // Texto de acessibilidade
     .iti__a11y-text {
       color: @text-h2;
       font-size: 12px;
     }
 
-    // Lista de países
     .iti__country-list {
       background: @card-bg;
       border: none;
@@ -354,7 +347,6 @@ intl-tel-input {
       }
     }
 
-    // Itens da lista
     .iti__country {
       padding: 8px 12px;
       border-bottom: 1px solid fade(@border, 50%);
@@ -378,7 +370,6 @@ intl-tel-input {
       color: @text-h2;
     }
 
-    // Input do telefone
     .iti__tel-input {
       width: 100%;
       height: 44px;
@@ -386,9 +377,8 @@ intl-tel-input {
       border: 1px solid @border-input;
       border-radius: 4px;
       color: @color-input;
-
       padding: 10px 12px;
-      padding-left: 55px !important;
+      padding-left: 82px !important;
       font-size: 14px;
       transition: all 0.3s ease;
 
@@ -407,7 +397,6 @@ intl-tel-input {
       }
     }
 
-    // Estados de erro (para validação)
     &.iti--invalid {
       .iti__selected-country,
       .iti__tel-input {
@@ -415,14 +404,12 @@ intl-tel-input {
       }
     }
 
-    // Quando dropdown está aberto
     &.iti--show-dropdown {
       .iti__selected-country {
         border-color: @primary-blue;
         box-shadow: 0 0 0 2px fade(@primary-blue, 20%);
       }
 
-      // Inverte a seta quando o dropdown está aberto
       .iti__arrow {
         border-top: none;
         border-bottom: 4px solid @input-suffix-color;
@@ -433,14 +420,40 @@ intl-tel-input {
   }
 }
 
-/* Para garantir que o container ocupe toda a largura do form item */
+// DESABILITA O COMPORTAMENTO DE MODAL/FULLSCREEN EM MOBILE
+.iti__mobile {
+  position: static !important;
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  background: none !important;
+  box-shadow: none !important;
+  transform: none !important;
+  padding: 0 !important;
+}
+
+// FORÇA O DROPDOWN A NUNCA SER FULLSCREEN
+.iti__dropdown-content.iti__mobile {
+  position: absolute !important;
+  top: 100% !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  max-height: 300px !important;
+  overflow-y: auto !important;
+  background: @card-bg !important;
+  border: 1px solid @border !important;
+  border-radius: 4px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  margin-top: 4px !important;
+}
+
 .ant-form-item-control-input {
   intl-tel-input {
     width: 100%;
   }
 }
 
-/* Integração com validação do NG-Zorro */
 .ant-form-item-has-error {
   intl-tel-input {
     .iti__selected-country,
@@ -454,7 +467,6 @@ intl-tel-input {
   }
 }
 
-/* Quando estiver desabilitado */
 .ant-input-disabled {
   intl-tel-input {
     .iti__selected-country,
@@ -465,17 +477,4 @@ intl-tel-input {
       cursor: not-allowed;
     }
   }
-}
-.iti__mobile {
-  position: absolute !important;
-  top: auto !important;
-  bottom: auto !important;
-  left: 0 !important;
-  right: 0 !important;
-  width: auto !important;
-  height: auto !important;
-  background: none !important;
-  box-shadow: none !important;
-  transform: none !important;
-  padding: 0 !important;
 }

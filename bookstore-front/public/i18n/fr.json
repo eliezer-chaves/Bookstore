@@ -22,7 +22,7 @@
                     "placeholderFirstName": "Jean",
                     "labelLastName": "Nom",
                     "placeholderLastName": "Dupont",
-                    "labelPhone": "Téléphone",
+                    "labelPhone": "Mobile",
                     "labelEmail": "E-mail",
                     "placeholderEmail": "jean@email.com",
                     "labelPassword": "Mot de passe",
@@ -32,14 +32,23 @@
                     "linkLogin": " Se Connecter",
                     "errorFirstName": "Veuillez entrer votre prénom.",
                     "errorLastName": "Veuillez entrer votre nom.",
-                    "errorPhone": "Veuillez entrer un numéro de téléphone.",
-                    "errorPhoneInvalid": "Veuillez entrer un numéro de téléphone valide.",
+                    "errorPhone": "Veuillez entrer un numéro de mobile.",
+                    "errorPhoneInvalid": "Veuillez entrer un numéro de mobile valide.",
                     "errorEmail": "Veuillez entrer un e-mail.",
                     "errorEmailInvalid": "Veuillez entrer un e-mail valide.",
                     "errorPassword": "Veuillez entrer un mot de passe.",
                     "errorPasswordMinLength": "Le mot de passe doit contenir au moins 6 caractères.",
                     "errorConfirmPasswordRequired": "Veuillez confirmer votre mot de passe.",
                     "errorConfirmPassword": "Les mots de passe ne correspondent pas."
+                }
+            },
+            "components": {
+                "phoneInput": {
+                    "searchPlaceholder": "Rechercher...",
+                    "zeroSearchResults": "Aucun résultat trouvé",
+                    "clearSearchAriaLabel": "Effacer la recherche",
+                    "countryListAriaLabel": "Liste des pays",
+                    "selectedCountryAriaLabel": "Pays sélectionné"
                 }
             }
         },
@@ -84,7 +93,7 @@
                 "user": "Utilisateur",
                 "changeLanguage": "Changer de Langue",
                 "changeTheme": "Changer de Thème",
-                "logoutMessage": "Déconnexion..."
+                "logoutMessage": "Déconnexion en cours..."
             }
         }
     }
