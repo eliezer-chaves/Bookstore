@@ -25,6 +25,8 @@ import { IntlTelInputComponent } from "intl-tel-input/angularWithUtils";
 import { map, merge, Observable, of, startWith, switchMap, timer } from 'rxjs';
 import { environment } from '../../../../environment/environment';
 import { passwordStrengthValidator } from "../../../../core/functions/password-strength.validator"
+import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { ErrorTranslationService } from '../../../../core/services/error-translation.service';
 
 @Component({
   selector: 'app-create-account.page',
@@ -75,7 +77,7 @@ export class CreateAccountPageComponent implements OnInit {
     usr_phone: this.fb.control('', [Validators.required, this.phoneValidator.bind(this)]),
     usr_email: this.fb.control('', [Validators.required, Validators.email]),
     usr_password: this.fb.control('', [
-      Validators.required, 
+      Validators.required,
       Validators.minLength(environment.passwordMinLenght),
       passwordStrengthValidator() // Adicione o validador aqui
     ]),
@@ -87,7 +89,10 @@ export class CreateAccountPageComponent implements OnInit {
 
   public telInputOptions$!: Observable<any>;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private notificationService: NzNotificationService,
+    private errorTranslationService: ErrorTranslationService,
+
+  ) { }
 
   ngOnInit() {
     this.telInputOptions$ = this.translocoService.langChanges$.pipe(
@@ -160,7 +165,7 @@ export class CreateAccountPageComponent implements OnInit {
   // Getter para mostrar erro do telefone
   get phoneErrorMessage(): string {
     const control = this.validateForm.get('usr_phone');
-    
+
     if (!control || !control.touched || !control.errors) {
       return '';
     }
@@ -168,7 +173,7 @@ export class CreateAccountPageComponent implements OnInit {
     if (control.errors['required']) {
       return this.translocoService.translate('domain.auth.pages.createAccount.errorPhone');
     }
-    
+
     if (control.errors['invalidPhone']) {
       return this.translocoService.translate('domain.auth.pages.createAccount.errorPhoneInvalid');
     }
@@ -196,7 +201,7 @@ export class CreateAccountPageComponent implements OnInit {
 
   handleNumberChange(event: any) {
     this.phoneNumber = event;
-    
+
     const control = this.validateForm.get('usr_phone');
     if (control) {
       control.setValue(event, { emitEvent: false });
@@ -207,7 +212,7 @@ export class CreateAccountPageComponent implements OnInit {
 
   handleValidityChange(isValid: boolean) {
     this.isPhoneValid = isValid;
-    
+
     const control = this.validateForm.get('usr_phone');
     if (control && control.touched) {
       setTimeout(() => control.updateValueAndValidity(), 50);
@@ -247,11 +252,12 @@ export class CreateAccountPageComponent implements OnInit {
 
       this.authService.register(formData as iUserRegister).subscribe({
         next: () => {
-          console.log('Usuário criado com sucesso');
           this.isLoading = false;
         },
         error: (err) => {
-          console.error('Erro no registro:', err);
+          const { title, message } = this.errorTranslationService.translateBackendError(err);
+
+          this.notificationService.error(title, message);
           this.isLoading = false;
         }
       });
