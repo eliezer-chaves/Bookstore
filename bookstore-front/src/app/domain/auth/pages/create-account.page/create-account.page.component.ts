@@ -24,6 +24,10 @@ import { ButtonThemeComponent } from '../../../../core/components/button-theme/b
 import { IntlTelInputComponent } from "intl-tel-input/angularWithUtils";
 import { map, merge, Observable, of, startWith, switchMap, timer } from 'rxjs';
 import { environment } from '../../../../environment/environment';
+import { PhoneNumberUtil } from 'google-libphonenumber';
+import { NgxIntlTelInputComponent } from "ngx-intl-tel-input-gg";
+
+
 
 @Component({
   selector: 'app-create-account.page',
@@ -49,14 +53,19 @@ import { environment } from '../../../../environment/environment';
     NzDividerComponent,
     ButtonLanguageComponent,
     ButtonThemeComponent,
-    IntlTelInputComponent
+    IntlTelInputComponent,
+
   ],
   templateUrl: './create-account.page.component.html',
   styleUrl: './create-account.page.component.css'
 })
 
 export class CreateAccountPageComponent implements OnInit {
-  @ViewChild('telInput') telInput!: IntlTelInputComponent;
+  @ViewChild('telInput') telInput!: NgxIntlTelInputComponent;
+
+  phoneUtil = PhoneNumberUtil.getInstance();
+
+
 
   loadingService = inject(LoadingService);
   private translocoService = inject(TranslocoService);
@@ -113,22 +122,28 @@ export class CreateAccountPageComponent implements OnInit {
     );
   }
 
-  // Validador SÍNCRONO para telefone
   phoneValidator(control: AbstractControl): ValidationErrors | null {
     const value = control.value;
-    
-    // Se não há valor, deixa o Validators.required cuidar
-    if (!value || value.trim() === '') {
-      return null;
-    }
 
-    // Verifica se o telefone é válido
-    if (!this.isPhoneValid) {
+    if (!value) return null;
+
+    try {
+      const iso2 = this.telInput?.selectedCountryISO?.toUpperCase() || 'BR';
+      const dialCode = this.telInput?.selectedCountryISO || '';
+
+      const fullNumber = `+${dialCode}${value}`;
+
+      const number = this.phoneUtil.parseAndKeepRawInput(fullNumber, iso2);
+
+      const isValid = this.phoneUtil.isValidNumberForRegion(number, iso2);
+
+      return isValid ? null : { invalidPhone: true };
+    } catch {
       return { invalidPhone: true };
     }
-
-    return null;
   }
+
+
 
   // Validador para confirmar senha
   passwordMatchValidator(control: AbstractControl): ValidationErrors | null {
@@ -145,7 +160,7 @@ export class CreateAccountPageComponent implements OnInit {
   // Getter para mostrar erro do telefone
   get phoneErrorMessage(): string {
     const control = this.validateForm.get('usr_phone');
-    
+
     if (!control || !control.touched || !control.errors) {
       return '';
     }
@@ -153,7 +168,7 @@ export class CreateAccountPageComponent implements OnInit {
     if (control.errors['required']) {
       return this.translocoService.translate('domain.auth.pages.createAccount.errorPhone');
     }
-    
+
     if (control.errors['invalidPhone']) {
       return this.translocoService.translate('domain.auth.pages.createAccount.errorPhoneInvalid');
     }
@@ -169,18 +184,19 @@ export class CreateAccountPageComponent implements OnInit {
 
   handleNumberChange(event: any) {
     this.phoneNumber = event;
-    
     const control = this.validateForm.get('usr_phone');
+
     if (control) {
       control.setValue(event, { emitEvent: false });
       control.markAsTouched();
-      setTimeout(() => control.updateValueAndValidity(), 50);
+      control.updateValueAndValidity();
     }
   }
 
+
   handleValidityChange(isValid: boolean) {
     this.isPhoneValid = isValid;
-    
+
     const control = this.validateForm.get('usr_phone');
     if (control && control.touched) {
       setTimeout(() => control.updateValueAndValidity(), 50);
