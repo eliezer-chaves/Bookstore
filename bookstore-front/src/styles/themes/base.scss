@@ -187,3 +187,37 @@ nz-avatar {
   background-color: var(--avatar-card) !important;
   color: var(--header-avatar-icon) !important;
 }
+
+
+/* Mensagem de erro do telefone - segue o padrão global */
+.ant-form-item-explain-error {
+  position: absolute;
+  top: calc(100%);
+  left: 0;
+  width: 100%;
+  font-size: 12px;
+  line-height: 1.4;
+  color: $primary-red;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: all 0.2s ease-out;
+}
+
+/* Quando há erro, mostra a mensagem */
+::ng-deep nz-form-control[ng-reflect-nz-validate-status="error"] .ant-form-item-explain-error {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Borda vermelha no telefone quando tem erro */
+::ng-deep nz-form-control[ng-reflect-nz-validate-status="error"] {
+  .iti__selected-country,
+  .iti__tel-input {
+    border-color: $primary-red !important;
+  }
+
+  .iti__tel-input:focus {
+    box-shadow: 0 0 0 2px rgba($primary-red, 0.2) !important;
+  }
+}

@@ -29,10 +29,14 @@
                 "glob": "**/*",
                 "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
                 "output": "/assets/"
+              },
+              {
+                "glob": "version.json",
+                "input": "src",
+                "output": "./"
               }
             ],
             "styles": [
-              
               "./node_modules/intl-tel-input/build/css/intlTelInput.css",
               {
                 "input": "src/styles/light.scss",

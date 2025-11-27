@@ -1,5 +1,5 @@
 import { Component, inject, OnInit, ViewChild } from '@angular/core';
-import { ReactiveFormsModule, FormsModule, NonNullableFormBuilder, Validators } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule, NonNullableFormBuilder, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { AsyncPipe } from '@angular/common'; // <--- IMPORTANTE: Adicionado
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -53,13 +53,13 @@ import { map, merge, Observable, of, startWith, switchMap, timer } from 'rxjs';
   templateUrl: './create-account.page.component.html',
   styleUrl: './create-account.page.component.css'
 })
+
 export class CreateAccountPageComponent implements OnInit {
   @ViewChild('telInput') telInput!: IntlTelInputComponent;
 
   loadingService = inject(LoadingService);
   private translocoService = inject(TranslocoService);
   isLoading = false;
-
   private fb = inject(NonNullableFormBuilder);
 
   validateForm = this.fb.group({
@@ -81,21 +81,18 @@ export class CreateAccountPageComponent implements OnInit {
   ngOnInit() {
     this.telInputOptions$ = this.translocoService.langChanges$.pipe(
       startWith(this.translocoService.getActiveLang()),
-
       switchMap(() => {
-     
         return merge(
-          of(null), 
-          timer(100).pipe( 
+          of(null),
+          timer(100).pipe(
             switchMap(() =>
               this.translocoService.selectTranslateObject('domain.auth.components.phoneInput')
             )
           )
         );
       }),
-
       map((translations) => {
-        if (!translations) return null; 
+        if (!translations) return null;
 
         return {
           initialCountry: 'br',
@@ -109,18 +106,22 @@ export class CreateAccountPageComponent implements OnInit {
           countryOrder: ['br', 'us'],
           useFullscreenPopup: false,
           dropdownContainer: null,
-          i18n: translations 
+          i18n: translations
         };
       })
     );
   }
 
-  // Validador customizado para telefone
-  phoneValidator(control: any) {
-    if (!control.value) {
+  // Validador SÍNCRONO para telefone
+  phoneValidator(control: AbstractControl): ValidationErrors | null {
+    const value = control.value;
+    
+    // Se não há valor, deixa o Validators.required cuidar
+    if (!value || value.trim() === '') {
       return null;
     }
 
+    // Verifica se o telefone é válido
     if (!this.isPhoneValid) {
       return { invalidPhone: true };
     }
@@ -129,7 +130,7 @@ export class CreateAccountPageComponent implements OnInit {
   }
 
   // Validador para confirmar senha
-  passwordMatchValidator(control: any) {
+  passwordMatchValidator(control: AbstractControl): ValidationErrors | null {
     const password = this.validateForm?.get('usr_password')?.value;
     const confirmPassword = control.value;
 
@@ -140,29 +141,68 @@ export class CreateAccountPageComponent implements OnInit {
     return null;
   }
 
+  // Getter para mostrar erro do telefone
+  get phoneErrorMessage(): string {
+    const control = this.validateForm.get('usr_phone');
+    
+    if (!control || !control.touched || !control.errors) {
+      return '';
+    }
+
+    if (control.errors['required']) {
+      return this.translocoService.translate('domain.auth.pages.createAccount.errorPhone');
+    }
+    
+    if (control.errors['invalidPhone']) {
+      return this.translocoService.translate('domain.auth.pages.createAccount.errorPhoneInvalid');
+    }
+
+    return '';
+  }
+
+  // Getter para saber se deve mostrar erro
+  get showPhoneError(): boolean {
+    const control = this.validateForm.get('usr_phone');
+    return !!(control && control.touched && control.invalid);
+  }
+
   handleNumberChange(event: any) {
-    //console.log('Número completo (E164):', event);
     this.phoneNumber = event;
-
-    this.validateForm.patchValue({
-      usr_phone: event
-    });
-
-    this.validateForm.get('usr_phone')?.updateValueAndValidity();
+    
+    const control = this.validateForm.get('usr_phone');
+    if (control) {
+      control.setValue(event, { emitEvent: false });
+      control.markAsTouched();
+      setTimeout(() => control.updateValueAndValidity(), 50);
+    }
   }
 
   handleValidityChange(isValid: boolean) {
-    //console.log('Telefone válido:', isValid);
     this.isPhoneValid = isValid;
-
-    this.validateForm.get('usr_phone')?.updateValueAndValidity();
+    
+    const control = this.validateForm.get('usr_phone');
+    if (control && control.touched) {
+      setTimeout(() => control.updateValueAndValidity(), 50);
+    }
   }
 
   handleCountryChange(event: any) {
-    //console.log('País alterado:', event);
+    const control = this.validateForm.get('usr_phone');
+    if (control) {
+      setTimeout(() => control.updateValueAndValidity(), 50);
+    }
+  }
+
+  onPhoneBlur() {
+    const control = this.validateForm.get('usr_phone');
+    if (control) {
+      control.markAsTouched();
+      control.updateValueAndValidity();
+    }
   }
 
   submitForm() {
+    // Marca todos os campos como touched
     Object.keys(this.validateForm.controls).forEach(key => {
       const control = this.validateForm.get(key);
       control?.markAsTouched();
@@ -187,8 +227,6 @@ export class CreateAccountPageComponent implements OnInit {
           this.isLoading = false;
         }
       });
-    } else {
-      console.log('Formulário inválido', this.validateForm.errors);
     }
   }
 }

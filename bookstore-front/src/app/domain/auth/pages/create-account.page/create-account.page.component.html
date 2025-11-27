@@ -30,21 +30,18 @@
 
         <nz-form-item class="mt-3">
             <nz-form-label>{{ 'domain.auth.pages.createAccount.labelPhone' | transloco }}</nz-form-label>
-            <nz-form-control [nzErrorTip]="phoneErrorTpl">
-
+            <nz-form-control [nzValidateStatus]="showPhoneError ? 'error' : ''">
                 @if (telInputOptions$ | async; as options) {
                 <intl-tel-input #telInput [initOptions]="options" (numberChange)="handleNumberChange($event)"
-                    (validityChange)="handleValidityChange($event)" (countryChange)="handleCountryChange($event)" />
+                    (validityChange)="handleValidityChange($event)" (countryChange)="handleCountryChange($event)"
+                    (blur)="onPhoneBlur()" />
                 }
 
-                <ng-template #phoneErrorTpl let-control>
-                    @if (control.errors?.['required']) {
-                    {{ 'domain.auth.pages.createAccount.errorPhone' | transloco }}
-                    }
-                    @if (control.errors?.['invalidPhone']) {
-                    {{ 'domain.auth.pages.createAccount.errorPhoneInvalid' | transloco }}
-                    }
-                </ng-template>
+                @if (showPhoneError) {
+                <div class="ant-form-item-explain-error">
+                    {{ phoneErrorMessage }}
+                </div>
+                }
             </nz-form-control>
         </nz-form-item>
         <nz-form-item class="mt-3">
