@@ -5,14 +5,14 @@
                 "login": {
                     "loginTitle": "Bon retour !",
                     "loginSubtitle": "Veuillez entrer vos informations pour vous connecter.",
-                    "labelEmail": "E-mail",
+                    "labelEmail": "Email",
                     "labelPassword": "Mot de passe",
                     "placeholderEmail": "jean@email.com",
                     "textCreateAccount": "Vous n'avez pas de compte ?",
                     "buttonLogin": "Se Connecter",
                     "linkCreateAccount": " Créer un Compte",
-                    "errorEmailRequired": "Veuillez entrer un e-mail.",
-                    "errorEmailInvalid": "Veuillez entrer un e-mail valide.",
+                    "errorEmailRequired": "Veuillez entrer un email.",
+                    "errorEmailInvalid": "Veuillez entrer un email valide.",
                     "errorPasswordRequired": "Veuillez entrer un mot de passe.",
                     "errorPasswordMinLength": "Le mot de passe doit contenir au moins 8 caractères."
                 },
@@ -23,7 +23,7 @@
                     "labelLastName": "Nom",
                     "placeholderLastName": "Dupont",
                     "labelPhone": "Mobile",
-                    "labelEmail": "E-mail",
+                    "labelEmail": "Email",
                     "placeholderEmail": "jean@email.com",
                     "labelPassword": "Mot de passe",
                     "labelConfirmPassword": "Confirmer le Mot de Passe",
@@ -34,12 +34,19 @@
                     "errorLastName": "Veuillez entrer votre nom.",
                     "errorPhone": "Veuillez entrer un numéro de mobile.",
                     "errorPhoneInvalid": "Veuillez entrer un numéro de mobile valide.",
-                    "errorEmail": "Veuillez entrer un e-mail.",
-                    "errorEmailInvalid": "Veuillez entrer un e-mail valide.",
+                    "errorEmail": "Veuillez entrer un email.",
+                    "errorEmailInvalid": "Veuillez entrer un email valide.",
                     "errorPassword": "Veuillez entrer un mot de passe.",
-                    "errorPasswordMinLength": "Le mot de passe doit contenir au moins 6 caractères.",
+                    "errorPasswordMinLength": "Le mot de passe doit contenir au moins 8 caractères.",
                     "errorConfirmPasswordRequired": "Veuillez confirmer votre mot de passe.",
-                    "errorConfirmPassword": "Les mots de passe ne correspondent pas."
+                    "errorConfirmPassword": "Les mots de passe ne correspondent pas.",
+                    "passwordRequirements": {
+                        "uppercase": "Au moins 1 lettre majuscule (A-Z)",
+                        "lowercase": "Au moins 1 lettre minuscule (a-z)",
+                        "minLength": "Minimum {{minLength}} caractères",
+                        "specialChar": "Au moins 1 caractère spécial (!@#$%^&*)",
+                        "commonSequence": "Évitez les séquences courantes du clavier"
+                    }
                 }
             },
             "components": {
@@ -67,10 +74,10 @@
             "genericError": "Une erreur inattendue s'est produite. Veuillez réessayer.",
             "unauthenticated": "Session expirée. Veuillez vous reconnecter.",
             "serverError": "Erreur interne du serveur. Veuillez réessayer plus tard.",
-            "invalidCredentials": "E-mail ou mot de passe incorrect.",
+            "invalidCredentials": "Email ou mot de passe incorrect.",
             "userNotFound": "Utilisateur non trouvé.",
             "accountLocked": "Compte bloqué. Veuillez contacter le support.",
-            "emailNotVerified": "E-mail non vérifié. Veuillez vérifier votre boîte de réception.",
+            "emailNotVerified": "Email non vérifié. Vérifiez votre boîte de réception.",
             "validationError": "Données invalides. Veuillez vérifier les informations fournies.",
             "updateError": "Erreur lors de la mise à jour des données. Veuillez réessayer.",
             "invalidPassword": "Le mot de passe actuel est incorrect.",

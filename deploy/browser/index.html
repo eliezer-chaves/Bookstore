@@ -18,36 +18,8 @@
 <body>
   <app-root>
   </app-root>
-  <script>
-    (async function () {
-      const VERSION_URL = '/version.json';
+ 
 
-      let currentVersion = null;
-
-      async function checkVersion() {
-        try {
-          const res = await fetch(VERSION_URL, { cache: 'no-store' });
-          const json = await res.json();
-
-          if (!currentVersion) {
-            currentVersion = json.version;
-          } else if (json.version !== currentVersion) {
-            console.warn('Nova versão detectada. Recarregando...');
-            location.reload(true);
-          }
-        } catch (e) {
-          console.error("Erro ao checar versão:", e);
-        }
-      }
-
-      // Checa a cada 10 segundos (pode aumentar)
-      setInterval(checkVersion, 10000);
-
-      // Checa logo ao carregar
-      checkVersion();
-    })();
-  </script>
-
-<link rel="modulepreload" href="chunk-DQNNBEXA.js"><link rel="modulepreload" href="chunk-PP3ZORCC.js"><link rel="modulepreload" href="chunk-HEIRHBRI.js"><link rel="modulepreload" href="chunk-UFH2WG6D.js"><link rel="modulepreload" href="chunk-5AO6IZ5C.js"><script src="polyfills-5CFQRCPP.js" type="module"></script><script src="main-OY5JH5L7.js" type="module"></script></body>
+<link rel="modulepreload" href="chunk-44NDUIZF.js"><link rel="modulepreload" href="chunk-N6543OJ6.js"><link rel="modulepreload" href="chunk-HEIRHBRI.js"><link rel="modulepreload" href="chunk-UFH2WG6D.js"><link rel="modulepreload" href="chunk-5AO6IZ5C.js"><script src="polyfills-5CFQRCPP.js" type="module"></script><script src="main-4GULTVE7.js" type="module"></script></body>
 
 </html>

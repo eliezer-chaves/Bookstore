@@ -37,9 +37,16 @@
                     "errorEmail": "Please enter an email.",
                     "errorEmailInvalid": "Please enter a valid email.",
                     "errorPassword": "Please enter a password.",
-                    "errorPasswordMinLength": "Password must be at least 6 characters.",
+                    "errorPasswordMinLength": "Password must be at least 8 characters.",
                     "errorConfirmPasswordRequired": "Please confirm your password.",
-                    "errorConfirmPassword": "Passwords do not match."
+                    "errorConfirmPassword": "Passwords do not match.",
+                    "passwordRequirements": {
+                        "uppercase": "At least 1 uppercase letter (A-Z)",
+                        "lowercase": "At least 1 lowercase letter (a-z)",
+                        "minLength": "Minimum {{minLength}} characters",
+                        "specialChar": "At least 1 special character (!@#$%^&*)",
+                        "commonSequence": "Avoid common keyboard sequences"
+                    }
                 }
             },
             "components": {
@@ -70,7 +77,7 @@
             "invalidCredentials": "Incorrect email or password.",
             "userNotFound": "User not found.",
             "accountLocked": "Account locked. Please contact support.",
-            "emailNotVerified": "Email not verified. Please check your inbox.",
+            "emailNotVerified": "Email not verified. Check your inbox.",
             "validationError": "Invalid data. Please check the provided information.",
             "updateError": "Error updating data. Please try again.",
             "invalidPassword": "Current password is incorrect.",
