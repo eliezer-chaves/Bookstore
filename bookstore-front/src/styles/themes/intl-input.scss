@@ -265,6 +265,11 @@ intl-tel-input {
 .ant-form-item-has-error intl-tel-input .iti__tel-input:focus {
   border-color: $primary-red !important;
 }
+.ant-form-item-has-error intl-tel-input .iti__tel-input:hover {
+  border-color: $primary-red !important;
+}
+
+
 .ant-form-item-has-error {
   intl-tel-input {
     .iti__selected-country,
