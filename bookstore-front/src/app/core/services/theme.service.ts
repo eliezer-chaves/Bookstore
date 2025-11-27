@@ -81,7 +81,7 @@ export class ThemeService {
     const head = document.head;
     const linkEl = document.createElement('link');
     linkEl.rel = 'stylesheet';
-    linkEl.href = `/${theme}.css`;
+    linkEl.href = `./${theme}.css`;
     linkEl.setAttribute('data-theme', theme);
 
     // Aguarda o CSS carregar antes de remover o anterior e esconder o loader

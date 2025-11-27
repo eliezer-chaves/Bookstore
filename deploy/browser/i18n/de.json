@@ -8,9 +8,9 @@
                     "labelEmail": "E-Mail",
                     "labelPassword": "Passwort",
                     "placeholderEmail": "max@email.com",
-                    "textCreateAccount": "Sie haben noch kein Konto?",
+                    "textCreateAccount": "Haben Sie noch kein Konto?",
                     "buttonLogin": "Anmelden",
-                    "linkCreateAccount": " Konto erstellen",
+                    "linkCreateAccount": " Konto Erstellen",
                     "errorEmailRequired": "Bitte geben Sie eine E-Mail-Adresse ein.",
                     "errorEmailInvalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
                     "errorPasswordRequired": "Bitte geben Sie ein Passwort ein.",
@@ -22,24 +22,33 @@
                     "placeholderFirstName": "Max",
                     "labelLastName": "Nachname",
                     "placeholderLastName": "Mustermann",
-                    "labelPhone": "Telefon",
+                    "labelPhone": "Mobil",
                     "labelEmail": "E-Mail",
                     "placeholderEmail": "max@email.com",
                     "labelPassword": "Passwort",
-                    "labelConfirmPassword": "Passwort bestätigen",
-                    "buttonCreateAccount": "Konto erstellen",
-                    "textCreateAccount": "Sie haben bereits ein Konto?",
+                    "labelConfirmPassword": "Passwort Bestätigen",
+                    "buttonCreateAccount": "Konto Erstellen",
+                    "textCreateAccount": "Haben Sie bereits ein Konto?",
                     "linkLogin": " Anmelden",
                     "errorFirstName": "Bitte geben Sie Ihren Vornamen ein.",
                     "errorLastName": "Bitte geben Sie Ihren Nachnamen ein.",
-                    "errorPhone": "Bitte geben Sie eine Telefonnummer ein.",
-                    "errorPhoneInvalid": "Bitte geben Sie eine gültige Telefonnummer ein.",
+                    "errorPhone": "Bitte geben Sie eine Mobilnummer ein.",
+                    "errorPhoneInvalid": "Bitte geben Sie eine gültige Mobilnummer ein.",
                     "errorEmail": "Bitte geben Sie eine E-Mail-Adresse ein.",
                     "errorEmailInvalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
                     "errorPassword": "Bitte geben Sie ein Passwort ein.",
                     "errorPasswordMinLength": "Das Passwort muss mindestens 6 Zeichen lang sein.",
                     "errorConfirmPasswordRequired": "Bitte bestätigen Sie Ihr Passwort.",
                     "errorConfirmPassword": "Die Passwörter stimmen nicht überein."
+                }
+            },
+            "components": {
+                "phoneInput": {
+                    "searchPlaceholder": "Suchen...",
+                    "zeroSearchResults": "Keine Ergebnisse gefunden",
+                    "clearSearchAriaLabel": "Suche löschen",
+                    "countryListAriaLabel": "Länderliste",
+                    "selectedCountryAriaLabel": "Ausgewähltes Land"
                 }
             }
         },
@@ -72,5 +81,20 @@
     },
     "loader": {
         "loading": "Lade Thema..."
+    },
+    "core": {
+        "components": {
+            "buttonTheme": {
+                "lightMode": "Hellmodus",
+                "darkMode": "Dunkelmodus"
+            },
+            "header": {
+                "title": "Bibliothek",
+                "user": "Benutzer",
+                "changeLanguage": "Sprache Ändern",
+                "changeTheme": "Thema Ändern",
+                "logoutMessage": "Abmeldung..."
+            }
+        }
     }
 }

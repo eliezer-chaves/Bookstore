@@ -176,7 +176,7 @@ export class CreateAccountPageComponent implements OnInit {
         ...this.validateForm.value,
         usr_phone: this.phoneNumber
       };
-      console.log(formData)
+
       this.authService.register(formData as iUserRegister).subscribe({
         next: () => {
           console.log('Usuário criado com sucesso');

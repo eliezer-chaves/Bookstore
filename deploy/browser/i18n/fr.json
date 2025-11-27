@@ -4,42 +4,51 @@
             "pages": {
                 "login": {
                     "loginTitle": "Bon retour !",
-                    "loginSubtitle": "Veuillez saisir vos informations pour vous connecter.",
+                    "loginSubtitle": "Veuillez entrer vos informations pour vous connecter.",
                     "labelEmail": "E-mail",
                     "labelPassword": "Mot de passe",
                     "placeholderEmail": "jean@email.com",
-                    "textCreateAccount": "Vous n'avez pas encore de compte ?",
-                    "buttonLogin": "Se connecter",
-                    "linkCreateAccount": " Créer un compte",
-                    "errorEmailRequired": "Veuillez saisir une adresse e-mail.",
-                    "errorEmailInvalid": "Veuillez saisir une adresse e-mail valide.",
-                    "errorPasswordRequired": "Veuillez saisir un mot de passe.",
+                    "textCreateAccount": "Vous n'avez pas de compte ?",
+                    "buttonLogin": "Se Connecter",
+                    "linkCreateAccount": " Créer un Compte",
+                    "errorEmailRequired": "Veuillez entrer un e-mail.",
+                    "errorEmailInvalid": "Veuillez entrer un e-mail valide.",
+                    "errorPasswordRequired": "Veuillez entrer un mot de passe.",
                     "errorPasswordMinLength": "Le mot de passe doit contenir au moins 8 caractères."
                 },
                 "createAccount": {
                     "title": "Créez votre compte",
                     "labelFirstName": "Prénom",
                     "placeholderFirstName": "Jean",
-                    "labelLastName": "Nom de famille",
+                    "labelLastName": "Nom",
                     "placeholderLastName": "Dupont",
-                    "labelPhone": "Téléphone",
+                    "labelPhone": "Mobile",
                     "labelEmail": "E-mail",
                     "placeholderEmail": "jean@email.com",
                     "labelPassword": "Mot de passe",
-                    "labelConfirmPassword": "Confirmer le mot de passe",
-                    "buttonCreateAccount": "Créer un compte",
+                    "labelConfirmPassword": "Confirmer le Mot de Passe",
+                    "buttonCreateAccount": "Créer un Compte",
                     "textCreateAccount": "Vous avez déjà un compte ?",
-                    "linkLogin": " Se connecter",
-                    "errorFirstName": "Veuillez saisir votre prénom.",
-                    "errorLastName": "Veuillez saisir votre nom de famille.",
-                    "errorPhone": "Veuillez saisir un numéro de téléphone.",
-                    "errorPhoneInvalid": "Veuillez saisir un numéro de téléphone valide.",
-                    "errorEmail": "Veuillez saisir une adresse e-mail.",
-                    "errorEmailInvalid": "Veuillez saisir une adresse e-mail valide.",
-                    "errorPassword": "Veuillez saisir un mot de passe.",
+                    "linkLogin": " Se Connecter",
+                    "errorFirstName": "Veuillez entrer votre prénom.",
+                    "errorLastName": "Veuillez entrer votre nom.",
+                    "errorPhone": "Veuillez entrer un numéro de mobile.",
+                    "errorPhoneInvalid": "Veuillez entrer un numéro de mobile valide.",
+                    "errorEmail": "Veuillez entrer un e-mail.",
+                    "errorEmailInvalid": "Veuillez entrer un e-mail valide.",
+                    "errorPassword": "Veuillez entrer un mot de passe.",
                     "errorPasswordMinLength": "Le mot de passe doit contenir au moins 6 caractères.",
                     "errorConfirmPasswordRequired": "Veuillez confirmer votre mot de passe.",
                     "errorConfirmPassword": "Les mots de passe ne correspondent pas."
+                }
+            },
+            "components": {
+                "phoneInput": {
+                    "searchPlaceholder": "Rechercher...",
+                    "zeroSearchResults": "Aucun résultat trouvé",
+                    "clearSearchAriaLabel": "Effacer la recherche",
+                    "countryListAriaLabel": "Liste des pays",
+                    "selectedCountryAriaLabel": "Pays sélectionné"
                 }
             }
         },
@@ -70,7 +79,22 @@
             "logoutSuccess": "Déconnexion réussie."
         }
     },
-    "loader":{
-        "loading": "Chargement du theme..."
+    "loader": {
+        "loading": "Chargement du thème..."
+    },
+    "core": {
+        "components": {
+            "buttonTheme": {
+                "lightMode": "Mode Clair",
+                "darkMode": "Mode Sombre"
+            },
+            "header": {
+                "title": "Bibliothèque",
+                "user": "Utilisateur",
+                "changeLanguage": "Changer de Langue",
+                "changeTheme": "Changer de Thème",
+                "logoutMessage": "Déconnexion en cours..."
+            }
+        }
     }
 }

@@ -5,7 +5,7 @@ export interface LanguageConfig {
 }
 
 export const environment = {
-  production: false,
+  
   apiUrl: 'https://wheat-porpoise-135321.hostingersite.com/api',
 
   // Configuração dinâmica dos idiomas

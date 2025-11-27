@@ -4,16 +4,16 @@
             "pages": {
                 "login": {
                     "loginTitle": "¡Bienvenido de nuevo!",
-                    "loginSubtitle": "Por favor, ingresa tus datos para iniciar sesión.",
+                    "loginSubtitle": "Por favor, introduce tus datos para iniciar sesión.",
                     "labelEmail": "Correo electrónico",
                     "labelPassword": "Contraseña",
                     "placeholderEmail": "juan@email.com",
-                    "textCreateAccount": "¿Aún no tienes una cuenta?",
+                    "textCreateAccount": "¿No tienes una cuenta?",
                     "buttonLogin": "Iniciar Sesión",
                     "linkCreateAccount": " Crear Cuenta",
-                    "errorEmailRequired": "Por favor, ingresa un correo electrónico.",
-                    "errorEmailInvalid": "Por favor, ingresa un correo electrónico válido.",
-                    "errorPasswordRequired": "Por favor, ingresa una contraseña.",
+                    "errorEmailRequired": "Por favor, introduce un correo electrónico.",
+                    "errorEmailInvalid": "Por favor, introduce un correo electrónico válido.",
+                    "errorPasswordRequired": "Por favor, introduce una contraseña.",
                     "errorPasswordMinLength": "La contraseña debe tener al menos 8 caracteres."
                 },
                 "createAccount": {
@@ -22,7 +22,7 @@
                     "placeholderFirstName": "Juan",
                     "labelLastName": "Apellido",
                     "placeholderLastName": "García",
-                    "labelPhone": "Teléfono",
+                    "labelPhone": "Móvil",
                     "labelEmail": "Correo electrónico",
                     "placeholderEmail": "juan@email.com",
                     "labelPassword": "Contraseña",
@@ -30,16 +30,25 @@
                     "buttonCreateAccount": "Crear Cuenta",
                     "textCreateAccount": "¿Ya tienes una cuenta?",
                     "linkLogin": " Iniciar Sesión",
-                    "errorFirstName": "Por favor, ingresa tu nombre.",
-                    "errorLastName": "Por favor, ingresa tu apellido.",
-                    "errorPhone": "Por favor, ingresa un número de teléfono.",
-                    "errorPhoneInvalid": "Por favor, ingresa un número de teléfono válido.",
-                    "errorEmail": "Por favor, ingresa un correo electrónico.",
-                    "errorEmailInvalid": "Por favor, ingresa un correo electrónico válido.",
-                    "errorPassword": "Por favor, ingresa una contraseña.",
+                    "errorFirstName": "Por favor, introduce tu nombre.",
+                    "errorLastName": "Por favor, introduce tu apellido.",
+                    "errorPhone": "Por favor, introduce un número de móvil.",
+                    "errorPhoneInvalid": "Por favor, introduce un número de móvil válido.",
+                    "errorEmail": "Por favor, introduce un correo electrónico.",
+                    "errorEmailInvalid": "Por favor, introduce un correo electrónico válido.",
+                    "errorPassword": "Por favor, introduce una contraseña.",
                     "errorPasswordMinLength": "La contraseña debe tener al menos 6 caracteres.",
                     "errorConfirmPasswordRequired": "Por favor, confirma tu contraseña.",
                     "errorConfirmPassword": "Las contraseñas no coinciden."
+                }
+            },
+            "components": {
+                "phoneInput": {
+                    "searchPlaceholder": "Buscar...",
+                    "zeroSearchResults": "No se encontraron resultados",
+                    "clearSearchAriaLabel": "Limpiar búsqueda",
+                    "countryListAriaLabel": "Lista de países",
+                    "selectedCountryAriaLabel": "País seleccionado"
                 }
             }
         },
@@ -55,22 +64,37 @@
     "errors": {
         "notifications": {
             "loginErrorTitle": "Error de Inicio de Sesión",
-            "genericError": "Ocurrió un error inesperado. Por favor, intente nuevamente.",
-            "unauthenticated": "Sesión expirada. Por favor, inicie sesión nuevamente.",
-            "serverError": "Error interno del servidor. Por favor, intente más tarde.",
+            "genericError": "Ocurrió un error inesperado. Inténtalo de nuevo.",
+            "unauthenticated": "Sesión expirada. Inicia sesión nuevamente.",
+            "serverError": "Error interno del servidor. Inténtalo más tarde.",
             "invalidCredentials": "Correo electrónico o contraseña incorrectos.",
             "userNotFound": "Usuario no encontrado.",
-            "accountLocked": "Cuenta bloqueada. Por favor, contacte al soporte.",
-            "emailNotVerified": "Correo electrónico no verificado. Por favor, revise su bandeja de entrada.",
-            "validationError": "Datos inválidos. Por favor, verifique la información proporcionada.",
-            "updateError": "Error al actualizar datos. Por favor, intente nuevamente.",
+            "accountLocked": "Cuenta bloqueada. Contacta con soporte.",
+            "emailNotVerified": "Correo electrónico no verificado. Revisa tu bandeja de entrada.",
+            "validationError": "Datos inválidos. Verifica la información proporcionada.",
+            "updateError": "Error al actualizar datos. Inténtalo de nuevo.",
             "invalidPassword": "La contraseña actual es incorrecta.",
-            "registerSuccess": "¡Cuenta creada exitosamente!",
-            "registerError": "Error al crear la cuenta. Por favor, intente nuevamente.",
+            "registerSuccess": "¡Cuenta creada con éxito!",
+            "registerError": "Error al crear la cuenta. Inténtalo de nuevo.",
             "logoutSuccess": "Cierre de sesión exitoso."
         }
     },
-    "loader":{
+    "loader": {
         "loading": "Cargando tema..."
+    },
+    "core": {
+        "components": {
+            "buttonTheme": {
+                "lightMode": "Modo Claro",
+                "darkMode": "Modo Oscuro"
+            },
+            "header": {
+                "title": "Biblioteca",
+                "user": "Usuario",
+                "changeLanguage": "Cambiar Idioma",
+                "changeTheme": "Cambiar Tema",
+                "logoutMessage": "Cerrando sesión..."
+            }
+        }
     }
 }
