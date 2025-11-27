@@ -1,7 +1,7 @@
 import { Component, inject, OnInit, ViewChild } from '@angular/core';
 import { ReactiveFormsModule, FormsModule, NonNullableFormBuilder, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { AsyncPipe } from '@angular/common'; // <--- IMPORTANTE: Adicionado
+import { AsyncPipe } from '@angular/common';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
@@ -24,6 +24,7 @@ import { ButtonThemeComponent } from '../../../../core/components/button-theme/b
 import { IntlTelInputComponent } from "intl-tel-input/angularWithUtils";
 import { map, merge, Observable, of, startWith, switchMap, timer } from 'rxjs';
 import { environment } from '../../../../environment/environment';
+import { passwordStrengthValidator } from "../../../../core/functions/password-strength.validator"
 
 @Component({
   selector: 'app-create-account.page',
@@ -54,21 +55,30 @@ import { environment } from '../../../../environment/environment';
   templateUrl: './create-account.page.component.html',
   styleUrl: './create-account.page.component.css'
 })
-
 export class CreateAccountPageComponent implements OnInit {
   @ViewChild('telInput') telInput!: IntlTelInputComponent;
+  minLenghtPassword: number = environment.passwordMinLenght
 
   loadingService = inject(LoadingService);
   private translocoService = inject(TranslocoService);
   isLoading = false;
   private fb = inject(NonNullableFormBuilder);
 
+  // Variáveis para controlar a visibilidade da senha e estado de digitação
+  passwordVisible = false;
+  confirmPasswordVisible = false;
+  hasTyped = false;
+
   validateForm = this.fb.group({
     usr_first_name: this.fb.control('', [Validators.required]),
     usr_last_name: this.fb.control('', [Validators.required]),
     usr_phone: this.fb.control('', [Validators.required, this.phoneValidator.bind(this)]),
     usr_email: this.fb.control('', [Validators.required, Validators.email]),
-    usr_password: this.fb.control('', [Validators.required, Validators.minLength(environment.passwordMinLenght)]),
+    usr_password: this.fb.control('', [
+      Validators.required, 
+      Validators.minLength(environment.passwordMinLenght),
+      passwordStrengthValidator() // Adicione o validador aqui
+    ]),
     usr_password_confirmation: this.fb.control('', [Validators.required, this.passwordMatchValidator.bind(this)])
   });
 
@@ -113,10 +123,15 @@ export class CreateAccountPageComponent implements OnInit {
     );
   }
 
+  // Método para rastrear quando o usuário começa a digitar a senha
+  onPasswordInput() {
+    const passwordControl = this.validateForm.get('usr_password');
+    this.hasTyped = !!passwordControl?.value && passwordControl.value.length > 0;
+  }
+
   // Validador SÍNCRONO para telefone
   phoneValidator(control: AbstractControl): ValidationErrors | null {
     const value = control.value;
-    console.log(value)
 
     if (!value || value.trim() === '') {
       return null;
@@ -165,6 +180,18 @@ export class CreateAccountPageComponent implements OnInit {
   get showPhoneError(): boolean {
     const control = this.validateForm.get('usr_phone');
     return !!(control && control.touched && control.invalid);
+  }
+
+  // Getter para verificar erros específicos da senha (para o template)
+  get passwordErrors() {
+    const passwordControl = this.validateForm.get('usr_password');
+    return {
+      hasUppercaseError: passwordControl?.hasError('uppercaseRequired'),
+      hasLowercaseError: passwordControl?.hasError('lowercaseRequired'),
+      hasMinLengthError: passwordControl?.hasError('minLength'),
+      hasSpecialCharError: passwordControl?.hasError('specialCharRequired'),
+      hasCommonSequenceError: passwordControl?.hasError('commonSequence')
+    };
   }
 
   handleNumberChange(event: any) {
