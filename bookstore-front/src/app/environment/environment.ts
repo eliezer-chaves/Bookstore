@@ -5,7 +5,8 @@ export interface LanguageConfig {
 }
 
 export const environment = {
-  
+  passwordMinLenght: 8,
+
   apiUrl: 'https://wheat-porpoise-135321.hostingersite.com/api',
 
   // Configuração dinâmica dos idiomas

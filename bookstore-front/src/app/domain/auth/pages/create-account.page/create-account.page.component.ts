@@ -23,6 +23,7 @@ import { ButtonLanguageComponent } from '../../../../core/components/button-lang
 import { ButtonThemeComponent } from '../../../../core/components/button-theme/button-theme.component';
 import { IntlTelInputComponent } from "intl-tel-input/angularWithUtils";
 import { map, merge, Observable, of, startWith, switchMap, timer } from 'rxjs';
+import { environment } from '../../../../environment/environment';
 
 @Component({
   selector: 'app-create-account.page',
@@ -67,7 +68,7 @@ export class CreateAccountPageComponent implements OnInit {
     usr_last_name: this.fb.control('', [Validators.required]),
     usr_phone: this.fb.control('', [Validators.required, this.phoneValidator.bind(this)]),
     usr_email: this.fb.control('', [Validators.required, Validators.email]),
-    usr_password: this.fb.control('', [Validators.required, Validators.minLength(6)]),
+    usr_password: this.fb.control('', [Validators.required, Validators.minLength(environment.passwordMinLenght)]),
     usr_password_confirmation: this.fb.control('', [Validators.required, this.passwordMatchValidator.bind(this)])
   });
 

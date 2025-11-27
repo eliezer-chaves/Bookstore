@@ -37,7 +37,7 @@
                     "errorEmail": "Veuillez entrer un e-mail.",
                     "errorEmailInvalid": "Veuillez entrer un e-mail valide.",
                     "errorPassword": "Veuillez entrer un mot de passe.",
-                    "errorPasswordMinLength": "Le mot de passe doit contenir au moins 6 caractères.",
+                    "errorPasswordMinLength": "Le mot de passe doit contenir au moins 8 caractères.",
                     "errorConfirmPasswordRequired": "Veuillez confirmer votre mot de passe.",
                     "errorConfirmPassword": "Les mots de passe ne correspondent pas."
                 }
