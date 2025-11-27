@@ -79,7 +79,7 @@
                             •
                             }
                         </span>
-                        Pelo menos 1 letra maiúscula (A-Z)
+                        {{ 'domain.auth.pages.createAccount.passwordRequirements.uppercase' | transloco }}
                     </div>
 
                     <div class="requirement" [class.satisfied]="!passwordErrors.hasLowercaseError && hasTyped"
@@ -91,7 +91,7 @@
                             •
                             }
                         </span>
-                        Pelo menos 1 letra minúscula (a-z)
+                        {{ 'domain.auth.pages.createAccount.passwordRequirements.lowercase' | transloco }}
                     </div>
 
                     <div class="requirement" [class.satisfied]="!passwordErrors.hasMinLengthError && hasTyped"
@@ -103,7 +103,8 @@
                             •
                             }
                         </span>
-                        Mínimo {{minLenghtPassword}} caracteres
+                        {{ 'domain.auth.pages.createAccount.passwordRequirements.minLength' | transloco:{ minLength:
+                        minLenghtPassword } }}
                     </div>
 
                     <div class="requirement" [class.satisfied]="!passwordErrors.hasSpecialCharError && hasTyped"
@@ -115,26 +116,18 @@
                             •
                             }
                         </span>
-                        Pelo menos 1 caractere especial (!@#$%^&*)
+                        {{ 'domain.auth.pages.createAccount.passwordRequirements.specialChar' | transloco }}
                     </div>
 
                     @if (passwordErrors.hasCommonSequenceError && hasTyped) {
                     <div class="requirement requirement-warning warning">
                         <span class="icon">⚠</span>
-                        Evite sequências comuns no teclado
+                        {{ 'domain.auth.pages.createAccount.passwordRequirements.commonSequence' | transloco }}
                     </div>
                     }
                 </div>
                 }
 
-                <!-- <ng-template #passwordErrorTpl let-control>
-                    @if (control.dirty || control.touched) {
-                    <div>
-                        {{ control.errors?.['required'] ? ('domain.auth.pages.createAccount.errorPassword' | transloco) : '' }}
-                        {{ control.errors?.['minlength'] ? ('domain.auth.pages.createAccount.errorPasswordMinLength' | transloco) : '' }}
-                    </div>
-                    }
-                </ng-template> -->
             </nz-form-control>
 
             <ng-template #suffixTemplatePassword>

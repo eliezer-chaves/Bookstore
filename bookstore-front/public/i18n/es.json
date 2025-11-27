@@ -4,16 +4,16 @@
             "pages": {
                 "login": {
                     "loginTitle": "¡Bienvenido de nuevo!",
-                    "loginSubtitle": "Por favor, introduce tus datos para iniciar sesión.",
+                    "loginSubtitle": "Por favor, ingresa tus datos para iniciar sesión.",
                     "labelEmail": "Correo electrónico",
                     "labelPassword": "Contraseña",
                     "placeholderEmail": "juan@email.com",
                     "textCreateAccount": "¿No tienes una cuenta?",
                     "buttonLogin": "Iniciar Sesión",
                     "linkCreateAccount": " Crear Cuenta",
-                    "errorEmailRequired": "Por favor, introduce un correo electrónico.",
-                    "errorEmailInvalid": "Por favor, introduce un correo electrónico válido.",
-                    "errorPasswordRequired": "Por favor, introduce una contraseña.",
+                    "errorEmailRequired": "Por favor, ingresa un correo electrónico.",
+                    "errorEmailInvalid": "Por favor, ingresa un correo electrónico válido.",
+                    "errorPasswordRequired": "Por favor, ingresa una contraseña.",
                     "errorPasswordMinLength": "La contraseña debe tener al menos 8 caracteres."
                 },
                 "createAccount": {
@@ -21,8 +21,8 @@
                     "labelFirstName": "Nombre",
                     "placeholderFirstName": "Juan",
                     "labelLastName": "Apellido",
-                    "placeholderLastName": "García",
-                    "labelPhone": "Móvil",
+                    "placeholderLastName": "Pérez",
+                    "labelPhone": "Celular",
                     "labelEmail": "Correo electrónico",
                     "placeholderEmail": "juan@email.com",
                     "labelPassword": "Contraseña",
@@ -30,16 +30,23 @@
                     "buttonCreateAccount": "Crear Cuenta",
                     "textCreateAccount": "¿Ya tienes una cuenta?",
                     "linkLogin": " Iniciar Sesión",
-                    "errorFirstName": "Por favor, introduce tu nombre.",
-                    "errorLastName": "Por favor, introduce tu apellido.",
-                    "errorPhone": "Por favor, introduce un número de móvil.",
-                    "errorPhoneInvalid": "Por favor, introduce un número de móvil válido.",
-                    "errorEmail": "Por favor, introduce un correo electrónico.",
-                    "errorEmailInvalid": "Por favor, introduce un correo electrónico válido.",
-                    "errorPassword": "Por favor, introduce una contraseña.",
+                    "errorFirstName": "Por favor, ingresa tu nombre.",
+                    "errorLastName": "Por favor, ingresa tu apellido.",
+                    "errorPhone": "Por favor, ingresa un número de celular.",
+                    "errorPhoneInvalid": "Por favor, ingresa un número de celular válido.",
+                    "errorEmail": "Por favor, ingresa un correo electrónico.",
+                    "errorEmailInvalid": "Por favor, ingresa un correo electrónico válido.",
+                    "errorPassword": "Por favor, ingresa una contraseña.",
                     "errorPasswordMinLength": "La contraseña debe tener al menos 8 caracteres.",
                     "errorConfirmPasswordRequired": "Por favor, confirma tu contraseña.",
-                    "errorConfirmPassword": "Las contraseñas no coinciden."
+                    "errorConfirmPassword": "Las contraseñas no coinciden.",
+                    "passwordRequirements": {
+                        "uppercase": "Al menos 1 letra mayúscula (A-Z)",
+                        "lowercase": "Al menos 1 letra minúscula (a-z)",
+                        "minLength": "Mínimo {{minLength}} caracteres",
+                        "specialChar": "Al menos 1 carácter especial (!@#$%^&*)",
+                        "commonSequence": "Evita secuencias comunes del teclado"
+                    }
                 }
             },
             "components": {
@@ -64,18 +71,18 @@
     "errors": {
         "notifications": {
             "loginErrorTitle": "Error de Inicio de Sesión",
-            "genericError": "Ocurrió un error inesperado. Inténtalo de nuevo.",
-            "unauthenticated": "Sesión expirada. Inicia sesión nuevamente.",
-            "serverError": "Error interno del servidor. Inténtalo más tarde.",
+            "genericError": "Ocurrió un error inesperado. Por favor, inténtalo de nuevo.",
+            "unauthenticated": "Sesión expirada. Por favor, inicia sesión nuevamente.",
+            "serverError": "Error interno del servidor. Por favor, inténtalo más tarde.",
             "invalidCredentials": "Correo electrónico o contraseña incorrectos.",
             "userNotFound": "Usuario no encontrado.",
-            "accountLocked": "Cuenta bloqueada. Contacta con soporte.",
+            "accountLocked": "Cuenta bloqueada. Contacta al soporte.",
             "emailNotVerified": "Correo electrónico no verificado. Revisa tu bandeja de entrada.",
             "validationError": "Datos inválidos. Verifica la información proporcionada.",
-            "updateError": "Error al actualizar datos. Inténtalo de nuevo.",
+            "updateError": "Error al actualizar datos. Por favor, inténtalo de nuevo.",
             "invalidPassword": "La contraseña actual es incorrecta.",
-            "registerSuccess": "¡Cuenta creada con éxito!",
-            "registerError": "Error al crear la cuenta. Inténtalo de nuevo.",
+            "registerSuccess": "¡Cuenta creada exitosamente!",
+            "registerError": "Error al crear la cuenta. Por favor, inténtalo de nuevo.",
             "logoutSuccess": "Cierre de sesión exitoso."
         }
     },

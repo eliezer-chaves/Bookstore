@@ -10,7 +10,7 @@
                     "placeholderEmail": "taro@email.com",
                     "textCreateAccount": "アカウントをお持ちでないですか？",
                     "buttonLogin": "サインイン",
-                    "linkCreateAccount": " アカウントを作成",
+                    "linkCreateAccount": " アカウント作成",
                     "errorEmailRequired": "メールアドレスを入力してください。",
                     "errorEmailInvalid": "有効なメールアドレスを入力してください。",
                     "errorPasswordRequired": "パスワードを入力してください。",
@@ -39,7 +39,14 @@
                     "errorPassword": "パスワードを入力してください。",
                     "errorPasswordMinLength": "パスワードは8文字以上である必要があります。",
                     "errorConfirmPasswordRequired": "パスワードを確認してください。",
-                    "errorConfirmPassword": "パスワードが一致しません。"
+                    "errorConfirmPassword": "パスワードが一致しません。",
+                    "passwordRequirements": {
+                        "uppercase": "少なくとも1つの大文字（A-Z）",
+                        "lowercase": "少なくとも1つの小文字（a-z）",
+                        "minLength": "最低{{minLength}}文字",
+                        "specialChar": "少なくとも1つの特殊文字（!@#$%^&*）",
+                        "commonSequence": "一般的なキーボードシーケンスを避けてください"
+                    }
                 }
             },
             "components": {
@@ -47,7 +54,7 @@
                     "searchPlaceholder": "検索...",
                     "zeroSearchResults": "結果が見つかりません",
                     "clearSearchAriaLabel": "検索をクリア",
-                    "countryListAriaLabel": "国のリスト",
+                    "countryListAriaLabel": "国リスト",
                     "selectedCountryAriaLabel": "選択された国"
                 }
             }
@@ -75,7 +82,7 @@
             "updateError": "データの更新中にエラーが発生しました。もう一度お試しください。",
             "invalidPassword": "現在のパスワードが正しくありません。",
             "registerSuccess": "アカウントが正常に作成されました！",
-            "registerError": "アカウント作成中にエラーが発生しました。もう一度お試しください。",
+            "registerError": "アカウントの作成中にエラーが発生しました。もう一度お試しください。",
             "logoutSuccess": "ログアウトが成功しました。"
         }
     },
